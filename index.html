@@ -9,27 +9,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Navigation with separator line -->
     <nav class="navbar">
         <div class="nav-content">
             <a href="#home" class="logo">dale.gg</a>
-            <ul class="nav-links">
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#projects">My Projects</a></li>
-                <li><a href="#contact">Contacts</a></li>
-            </ul>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#projects">My Projects</a></li>
+                    <li><a href="#contact">Contacts</a></li>
+                </ul>
+            </div>
         </div>
+        <div class="nav-line"></div>
     </nav>
 
     <!-- Hero Section - Star Constellation Theme -->
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-layout">
-                <!-- Left side - Image with connecting stars -->
+                <!-- Left side - Image with glowing effect -->
                 <div class="hero-left">
                     <div class="image-container">
                         <img src="dale-pic.jpg" alt="Dale Vincent Dimaano" class="profile-image">
                         <div class="image-glow"></div>
+                        <div class="image-glow-2"></div>
                         <!-- Connecting stars around image -->
                         <div class="constellation-stars">
                             <div class="star star-1"></div>
@@ -50,24 +54,12 @@
                     </div>
                 </div>
                 
-                <!-- Right side - Name with constellation pattern -->
+                <!-- Right side - Big Name (2 lines) -->
                 <div class="hero-right">
-                    <div class="name-constellation">
-                        <span class="constellation-letter" data-letter="D">D</span>
-                        <span class="constellation-letter" data-letter="A">A</span>
-                        <span class="constellation-letter" data-letter="L">L</span>
-                        <span class="constellation-letter" data-letter="E">E</span>
-                        <br>
-                        <span class="constellation-letter" data-letter="V">V</span>
-                        <span class="constellation-letter" data-letter="I">I</span>
-                        <span class="constellation-letter" data-letter="N">N</span>
-                        <span class="constellation-letter" data-letter="C">C</span>
-                        <span class="constellation-letter" data-letter="E">E</span>
-                        <span class="constellation-letter" data-letter="N">N</span>
-                        <span class="constellation-letter" data-letter="T">T</span>
+                    <div class="name-container">
+                        <h1 class="glowing-name-big">DALE<br>VINCENT</h1>
+                        <h2 class="glowing-name-last">DIMAANO</h2>
                     </div>
-                    <!-- Lines connecting letters (done via CSS) -->
-                    <div class="letter-lines"></div>
                     
                     <p class="profession constellation-title">
                         <span class="twinkle-star">✦</span> 
@@ -78,7 +70,7 @@
             </div>
         </div>
 
-        <!-- Star background with twinkling -->
+        <!-- Star background with twinkling - FIXED FULL SCREEN -->
         <div class="stars-container">
             <div class="stars"></div>
             <div class="twinkling"></div>
