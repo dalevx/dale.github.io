@@ -12,12 +12,11 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-content">
-            <a href="#home" class="logo">&lt;Dale/&gt;</a>
+            <a href="#home" class="logo">dale.gg</a>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#projects">My Projects</a></li>
+                <li><a href="#contact">Contacts</a></li>
             </ul>
         </div>
     </nav>
@@ -25,31 +24,27 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <div class="code-tag">&lt;h1&gt;</div>
-            <h1>Hi, I'm <span class="gradient-text">Dale Vincent Dimaano</span></h1>
-            <div class="code-tag">&lt;/h1&gt;</div>
-            
-            <div class="typed-text">Computer Engineer <span class="cursor">|</span></div>
-            <p class="hero-description">I build efficient systems and solve complex problems with code</p>
-            
-            <div class="tech-stack-hero">
-                <i class="fab fa-python"></i>
-                <i class="fab fa-java"></i>
-                <i class="fas fa-code"></i>
-                <i class="fas fa-database"></i>
-                <i class="fas fa-microchip"></i>
+            <!-- Profile Image -->
+            <div class="image-container">
+                <img src="dale-pic.jpg" alt="Dale Vincent Dimaano" class="profile-image">
+                <div class="image-glow"></div>
             </div>
+
+            <!-- Name with elegant pulse -->
+            <h1 class="glowing-name">DALE VINCENT</h1>
             
-            <a href="#projects" class="btn-primary">
-                <span>View My Work</span>
-                <i class="fas fa-arrow-right"></i>
-            </a>
+            <!-- Title -->
+            <p class="profession">Computer Engineer</p>
         </div>
+
+        <!-- Very subtle stars background -->
+        <div class="stars"></div>
+        <div class="twinkling"></div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="about">
-        <h2 class="section-title"><span class="code-comment">//</span> About Me</h2>
+        <h2 class="section-title">About Me</h2>
         <div class="about-content">
             <div class="about-text">
                 <p class="about-description">
@@ -94,7 +89,7 @@
 
     <!-- Projects Section -->
     <section id="projects" class="projects">
-        <h2 class="section-title"><span class="code-comment">/*</span> My Projects <span class="code-comment">*/</span></h2>
+        <h2 class="section-title">My Projects</h2>
         
         <!-- Filter Buttons -->
         <div class="project-filters">
@@ -179,87 +174,12 @@
                     <a href="#" class="project-link"><i class="fas fa-video"></i> Demo</a>
                 </div>
             </div>
-
-            <!-- Project Card 4 -->
-            <div class="project-card" data-category="embedded">
-                <div class="project-header">
-                    <div class="project-title">
-                        <i class="fas fa-robot"></i>
-                        <h3>Line Follower Robot</h3>
-                    </div>
-                    <span class="project-year">2023</span>
-                </div>
-                <p class="project-description">
-                    PID-controlled line follower robot using Arduino and IR sensors. 
-                    Achieved smooth navigation at speeds up to 1.5 m/s.
-                </p>
-                <div class="project-tech">
-                    <span>Arduino</span>
-                    <span>PID Control</span>
-                    <span>Sensors</span>
-                    <span>Motor Drivers</span>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
-                    <a href="#" class="project-link"><i class="fas fa-video"></i> Demo</a>
-                </div>
-            </div>
-
-            <!-- Project Card 5 -->
-            <div class="project-card" data-category="software">
-                <div class="project-header">
-                    <div class="project-title">
-                        <i class="fas fa-chart-line"></i>
-                        <h3>Network Traffic Analyzer</h3>
-                    </div>
-                    <span class="project-year">2024</span>
-                </div>
-                <p class="project-description">
-                    Python-based network monitoring tool with real-time visualization and anomaly detection. 
-                    Captures and analyzes packets to identify potential security threats.
-                </p>
-                <div class="project-tech">
-                    <span>Python</span>
-                    <span>Scapy</span>
-                    <span>Wireshark</span>
-                    <span>Django</span>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
-                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live</a>
-                </div>
-            </div>
-
-            <!-- Project Card 6 -->
-            <div class="project-card" data-category="iot">
-                <div class="project-header">
-                    <div class="project-title">
-                        <i class="fas fa-heartbeat"></i>
-                        <h3>Health Monitoring System</h3>
-                    </div>
-                    <span class="project-year">2023</span>
-                </div>
-                <p class="project-description">
-                    Wearable device for real-time health monitoring using ESP32 and biometric sensors. 
-                    Sends alerts to doctors in case of emergency.
-                </p>
-                <div class="project-tech">
-                    <span>ESP32</span>
-                    <span>Blynk</span>
-                    <span>IoT</span>
-                    <span>Sensors</span>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
-                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
-                </div>
-            </div>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-        <h2 class="section-title"><span class="code-comment">&lt;contact&gt;</span></h2>
+        <h2 class="section-title">Contacts</h2>
         
         <div class="contact-container">
             <div class="contact-info">
@@ -314,8 +234,7 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p>&lt;/&gt; with <i class="fas fa-heart"></i> by Dale Vincent Dimaano</p>
-            <p class="code-comment">// Always learning, always building</p>
+            <p>© 2024 Dale Vincent Dimaano. All rights reserved.</p>
         </div>
     </footer>
 
