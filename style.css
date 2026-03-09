@@ -165,13 +165,13 @@ body {
     }
 }
 
-/* Navigation */
+/* Navigation with separator line */
 .navbar {
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 2rem 0.5rem 2rem;
     background: transparent;
     transition: background 0.3s, backdrop-filter 0.3s;
 }
@@ -187,6 +187,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-bottom: 0.8rem;
 }
 
 .logo {
@@ -199,12 +200,15 @@ body {
     z-index: 2;
 }
 
+.nav-right {
+    position: relative;
+    z-index: 2;
+}
+
 .nav-links {
     display: flex;
     list-style: none;
     gap: 3rem;
-    position: relative;
-    z-index: 2;
 }
 
 .nav-links a {
@@ -232,6 +236,14 @@ body {
     width: 100%;
 }
 
+/* Navigation separator line */
+.nav-line {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--text-secondary), transparent);
+    opacity: 0.3;
+}
+
 /* Hero Section - Star Constellation Layout */
 .hero {
     min-height: 100vh;
@@ -240,7 +252,7 @@ body {
     justify-content: center;
     position: relative;
     z-index: 1;
-    padding: 2rem;
+    padding: 6rem 2rem 2rem 2rem;
 }
 
 .hero-content {
@@ -253,11 +265,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4rem;
+    gap: 5rem;
     flex-wrap: wrap;
 }
 
-/* Left side - Image with constellation */
+/* Left side - Image with glowing effect */
 .hero-left {
     flex: 1;
     display: flex;
@@ -266,8 +278,8 @@ body {
 
 .image-container {
     position: relative;
-    width: 350px;
-    height: 350px;
+    width: 380px;
+    height: 380px;
 }
 
 .profile-image {
@@ -279,22 +291,62 @@ body {
     z-index: 2;
 }
 
+/* Double Glowing Effect */
 .image-glow {
     position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
     border-radius: 50%;
-    background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
+    background: radial-gradient(circle at center, rgba(255,255,255,0.3) 0%, transparent 70%);
     z-index: 1;
     opacity: 0;
     transition: opacity 0.5s;
     pointer-events: none;
+    animation: glowPulse 3s ease-in-out infinite;
 }
 
-.image-container:hover .image-glow {
+.image-glow-2 {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 80%);
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+    animation: glowPulse2 4s ease-in-out infinite;
+}
+
+.image-container:hover .image-glow,
+.image-container:hover .image-glow-2 {
     opacity: 1;
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.6;
+    }
+}
+
+@keyframes glowPulse2 {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.3;
+    }
 }
 
 /* Constellation stars around image */
@@ -359,91 +411,56 @@ body {
     }
 }
 
-/* Right side - Name constellation */
+/* Right side - Big Name (2 lines) */
 .hero-right {
     flex: 1;
     text-align: left;
     position: relative;
 }
 
-.name-constellation {
-    font-size: 4rem;
+.name-container {
+    margin-bottom: 1.5rem;
+}
+
+.glowing-name-big {
+    font-size: 5.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    animation: elegantPulse 4s ease-in-out infinite;
+    text-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+.glowing-name-last {
+    font-size: 4.5rem;
     font-weight: 600;
     line-height: 1.2;
-    margin-bottom: 1rem;
-    position: relative;
-    z-index: 2;
-}
-
-.constellation-letter {
-    display: inline-block;
-    position: relative;
     color: var(--text-primary);
-    text-shadow: 0 0 15px var(--star-glow);
-    margin: 0 2px;
-    animation: letterTwinkle 3s ease-in-out infinite;
-    animation-delay: calc(var(--i) * 0.2s);
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    animation: elegantPulse 4s ease-in-out infinite;
+    animation-delay: 0.5s;
+    text-shadow: 0 0 20px rgba(255,255,255,0.3);
+    margin-top: 0.2rem;
 }
 
-.constellation-letter:nth-child(1) { --i: 0; }
-.constellation-letter:nth-child(2) { --i: 1; }
-.constellation-letter:nth-child(3) { --i: 2; }
-.constellation-letter:nth-child(4) { --i: 3; }
-.constellation-letter:nth-child(5) { --i: 4; }
-.constellation-letter:nth-child(6) { --i: 5; }
-.constellation-letter:nth-child(7) { --i: 6; }
-.constellation-letter:nth-child(8) { --i: 7; }
-.constellation-letter:nth-child(9) { --i: 8; }
-.constellation-letter:nth-child(10) { --i: 9; }
-.constellation-letter:nth-child(11) { --i: 10; }
-
-@keyframes letterTwinkle {
+@keyframes elegantPulse {
     0%, 100% {
-        text-shadow: 0 0 15px rgba(255,255,255,0.5);
-        transform: scale(1);
+        text-shadow: 0 0 20px rgba(255,255,255,0.3);
     }
     50% {
-        text-shadow: 0 0 30px rgba(255,255,255,0.9);
-        transform: scale(1.05);
+        text-shadow: 0 0 40px rgba(255,255,255,0.6);
     }
-}
-
-/* Lines connecting letters */
-.letter-lines {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.letter-lines::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        linear-gradient(45deg, transparent 45%, var(--line-color) 49%, transparent 55%),
-        linear-gradient(-45deg, transparent 45%, var(--line-color) 49%, transparent 55%);
-    opacity: 0.2;
-    animation: lineGlow 4s ease-in-out infinite;
-}
-
-@keyframes lineGlow {
-    0%, 100% { opacity: 0.2; }
-    50% { opacity: 0.4; }
 }
 
 .profession {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: 300;
     color: var(--text-secondary);
-    letter-spacing: 3px;
-    margin-top: 2rem;
+    letter-spacing: 4px;
+    margin-top: 1rem;
     position: relative;
     z-index: 2;
 }
@@ -458,7 +475,7 @@ body {
 .twinkle-star {
     color: var(--star-color);
     animation: starTwinkle 1.5s ease-in-out infinite;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
 }
 
 .twinkle-star:first-child {
@@ -827,20 +844,24 @@ footer {
     .hero-layout {
         flex-direction: column;
         text-align: center;
-        gap: 2rem;
+        gap: 3rem;
     }
     
     .hero-right {
         text-align: center;
     }
     
-    .name-constellation {
-        font-size: 3rem;
+    .glowing-name-big {
+        font-size: 4rem;
+    }
+    
+    .glowing-name-last {
+        font-size: 3.2rem;
     }
     
     .image-container {
-        width: 280px;
-        height: 280px;
+        width: 300px;
+        height: 300px;
     }
     
     .about-content,
@@ -860,11 +881,19 @@ footer {
 
 @media (max-width: 768px) {
     .nav-links {
-        display: none;
+        gap: 1.5rem;
     }
     
-    .name-constellation {
+    .glowing-name-big {
+        font-size: 3rem;
+    }
+    
+    .glowing-name-last {
         font-size: 2.5rem;
+    }
+    
+    .profession {
+        font-size: 1.2rem;
     }
     
     .project-grid {
@@ -875,5 +904,26 @@ footer {
         gap: 1rem;
         flex-direction: column;
         align-items: center;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    .nav-links {
+        gap: 1rem;
+        font-size: 0.8rem;
+    }
+    
+    .glowing-name-big {
+        font-size: 2.5rem;
+    }
+    
+    .glowing-name-last {
+        font-size: 2rem;
+    }
+    
+    .image-container {
+        width: 250px;
+        height: 250px;
     }
 }
