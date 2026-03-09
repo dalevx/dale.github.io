@@ -21,20 +21,24 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section - Picture Left, Name Right -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <!-- Profile Image -->
-            <div class="image-container">
-                <img src="dale-pic.jpg" alt="Dale Vincent Dimaano" class="profile-image">
-                <div class="image-glow"></div>
+            <div class="hero-layout">
+                <!-- Left side - Image -->
+                <div class="hero-left">
+                    <div class="image-container">
+                        <img src="dale-pic.jpg" alt="Dale Vincent Dimaano" class="profile-image">
+                        <div class="image-glow"></div>
+                    </div>
+                </div>
+                
+                <!-- Right side - Name and Title -->
+                <div class="hero-right">
+                    <h1 class="glowing-name">DALE<br>VINCENT</h1>
+                    <p class="profession">Computer Engineer</p>
+                </div>
             </div>
-
-            <!-- Name with elegant pulse -->
-            <h1 class="glowing-name">DALE VINCENT</h1>
-            
-            <!-- Title -->
-            <p class="profession">Computer Engineer</p>
         </div>
 
         <!-- Very subtle stars background -->
@@ -93,14 +97,15 @@
         
         <!-- Filter Buttons -->
         <div class="project-filters">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="embedded">Embedded Systems</button>
-            <button class="filter-btn" data-filter="software">Software</button>
-            <button class="filter-btn" data-filter="iot">IoT</button>
+            <button class="filter-btn active" data-filter="all">All (9)</button>
+            <button class="filter-btn" data-filter="embedded">Embedded Systems (3)</button>
+            <button class="filter-btn" data-filter="software">Software (3)</button>
+            <button class="filter-btn" data-filter="iot">IoT (3)</button>
         </div>
 
         <div class="project-grid">
-            <!-- Project Card 1 -->
+            <!-- ========== EMBEDDED SYSTEMS PROJECTS (3) ========== -->
+            <!-- Project Card 1 - Embedded -->
             <div class="project-card" data-category="embedded">
                 <div class="project-header">
                     <div class="project-title">
@@ -111,7 +116,7 @@
                 </div>
                 <p class="project-description">
                     Arduino-based home automation system with voice control and mobile app integration. 
-                    Features temperature monitoring, light control, and security alerts.
+                    Features temperature monitoring, light control, and security alerts with real-time notifications.
                 </p>
                 <div class="project-tech">
                     <span>Arduino</span>
@@ -125,7 +130,58 @@
                 </div>
             </div>
 
-            <!-- Project Card 2 -->
+            <!-- Project Card 2 - Embedded -->
+            <div class="project-card" data-category="embedded">
+                <div class="project-header">
+                    <div class="project-title">
+                        <i class="fas fa-robot"></i>
+                        <h3>Line Follower Robot</h3>
+                    </div>
+                    <span class="project-year">2023</span>
+                </div>
+                <p class="project-description">
+                    PID-controlled line follower robot using Arduino and IR sensors. 
+                    Achieved smooth navigation at speeds up to 1.5 m/s with optimized control algorithms.
+                </p>
+                <div class="project-tech">
+                    <span>Arduino</span>
+                    <span>PID Control</span>
+                    <span>Sensors</span>
+                    <span>Motor Drivers</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                    <a href="#" class="project-link"><i class="fas fa-video"></i> Demo</a>
+                </div>
+            </div>
+
+            <!-- Project Card 3 - Embedded -->
+            <div class="project-card" data-category="embedded">
+                <div class="project-header">
+                    <div class="project-title">
+                        <i class="fas fa-car"></i>
+                        <h3>Obstacle Avoidance Car</h3>
+                    </div>
+                    <span class="project-year">2023</span>
+                </div>
+                <p class="project-description">
+                    Autonomous RC car with ultrasonic sensors and servo-controlled steering. 
+                    Implements real-time obstacle detection and path planning algorithms.
+                </p>
+                <div class="project-tech">
+                    <span>Arduino</span>
+                    <span>Ultrasonic</span>
+                    <span>Servo</span>
+                    <span>C++</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                    <a href="#" class="project-link"><i class="fas fa-video"></i> Demo</a>
+                </div>
+            </div>
+
+            <!-- ========== SOFTWARE PROJECTS (3) ========== -->
+            <!-- Project Card 4 - Software -->
             <div class="project-card" data-category="software">
                 <div class="project-header">
                     <div class="project-title">
@@ -136,7 +192,7 @@
                 </div>
                 <p class="project-description">
                     Implemented A* and Dijkstra algorithms for robot navigation in dynamic environments. 
-                    Achieved 30% faster path computation compared to traditional methods.
+                    Achieved 30% faster path computation compared to traditional methods with visualization.
                 </p>
                 <div class="project-tech">
                     <span>Python</span>
@@ -150,7 +206,58 @@
                 </div>
             </div>
 
-            <!-- Project Card 3 -->
+            <!-- Project Card 5 - Software -->
+            <div class="project-card" data-category="software">
+                <div class="project-header">
+                    <div class="project-title">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Network Traffic Analyzer</h3>
+                    </div>
+                    <span class="project-year">2024</span>
+                </div>
+                <p class="project-description">
+                    Python-based network monitoring tool with real-time visualization and anomaly detection. 
+                    Captures and analyzes packets to identify potential security threats.
+                </p>
+                <div class="project-tech">
+                    <span>Python</span>
+                    <span>Scapy</span>
+                    <span>Wireshark</span>
+                    <span>Django</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live</a>
+                </div>
+            </div>
+
+            <!-- Project Card 6 - Software -->
+            <div class="project-card" data-category="software">
+                <div class="project-header">
+                    <div class="project-title">
+                        <i class="fas fa-calculator"></i>
+                        <h3>Matrix Calculator App</h3>
+                    </div>
+                    <span class="project-year">2023</span>
+                </div>
+                <p class="project-description">
+                    Java-based matrix calculator with GUI supporting various operations: addition, multiplication, 
+                    determinant, inverse, and eigen values calculation.
+                </p>
+                <div class="project-tech">
+                    <span>Java</span>
+                    <span>Swing</span>
+                    <span>Linear Algebra</span>
+                    <span>OOP</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                    <a href="#" class="project-link"><i class="fas fa-download"></i> Download</a>
+                </div>
+            </div>
+
+            <!-- ========== IOT PROJECTS (3) ========== -->
+            <!-- Project Card 7 - IoT -->
             <div class="project-card" data-category="iot">
                 <div class="project-header">
                     <div class="project-title">
@@ -161,7 +268,7 @@
                 </div>
                 <p class="project-description">
                     IoT-based soil monitoring system using ESP32 and various sensors. 
-                    Real-time data collection and analysis for optimal crop growth.
+                    Real-time data collection and analysis for optimal crop growth with cloud dashboard.
                 </p>
                 <div class="project-tech">
                     <span>ESP32</span>
@@ -172,6 +279,56 @@
                 <div class="project-links">
                     <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
                     <a href="#" class="project-link"><i class="fas fa-video"></i> Demo</a>
+                </div>
+            </div>
+
+            <!-- Project Card 8 - IoT -->
+            <div class="project-card" data-category="iot">
+                <div class="project-header">
+                    <div class="project-title">
+                        <i class="fas fa-heartbeat"></i>
+                        <h3>Health Monitoring System</h3>
+                    </div>
+                    <span class="project-year">2023</span>
+                </div>
+                <p class="project-description">
+                    Wearable device for real-time health monitoring using ESP32 and biometric sensors. 
+                    Sends alerts to doctors and family members in case of emergency.
+                </p>
+                <div class="project-tech">
+                    <span>ESP32</span>
+                    <span>Blynk</span>
+                    <span>IoT</span>
+                    <span>Sensors</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                </div>
+            </div>
+
+            <!-- Project Card 9 - IoT -->
+            <div class="project-card" data-category="iot">
+                <div class="project-header">
+                    <div class="project-title">
+                        <i class="fas fa-parking"></i>
+                        <h3>Smart Parking System</h3>
+                    </div>
+                    <span class="project-year">2024</span>
+                </div>
+                <p class="project-description">
+                    IoT-based parking monitoring system with ultrasonic sensors and mobile app. 
+                    Shows real-time slot availability and reservation system.
+                </p>
+                <div class="project-tech">
+                    <span>ESP8266</span>
+                    <span>Firebase</span>
+                    <span>Android</span>
+                    <span> Sensors</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                    <a href="#" class="project-link"><i class="fas fa-mobile-alt"></i> App</a>
                 </div>
             </div>
         </div>
