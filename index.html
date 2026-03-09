@@ -21,29 +21,69 @@
         </div>
     </nav>
 
-    <!-- Hero Section - Picture Left, Name Right -->
+    <!-- Hero Section - Star Constellation Theme -->
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-layout">
-                <!-- Left side - Image -->
+                <!-- Left side - Image with connecting stars -->
                 <div class="hero-left">
                     <div class="image-container">
                         <img src="dale-pic.jpg" alt="Dale Vincent Dimaano" class="profile-image">
                         <div class="image-glow"></div>
+                        <!-- Connecting stars around image -->
+                        <div class="constellation-stars">
+                            <div class="star star-1"></div>
+                            <div class="star star-2"></div>
+                            <div class="star star-3"></div>
+                            <div class="star star-4"></div>
+                            <div class="star star-5"></div>
+                            <div class="star star-6"></div>
+                        </div>
+                        <!-- Lines connecting stars -->
+                        <svg class="constellation-lines" viewBox="0 0 400 400">
+                            <line x1="200" y1="50" x2="100" y2="150" class="star-line"/>
+                            <line x1="100" y1="150" x2="150" y2="250" class="star-line"/>
+                            <line x1="150" y1="250" x2="250" y2="300" class="star-line"/>
+                            <line x1="250" y1="300" x2="300" y2="200" class="star-line"/>
+                            <line x1="300" y1="200" x2="200" y2="50" class="star-line"/>
+                        </svg>
                     </div>
                 </div>
                 
-                <!-- Right side - Name and Title -->
+                <!-- Right side - Name with constellation pattern -->
                 <div class="hero-right">
-                    <h1 class="glowing-name">DALE<br>VINCENT</h1>
-                    <p class="profession">Computer Engineer</p>
+                    <div class="name-constellation">
+                        <span class="constellation-letter" data-letter="D">D</span>
+                        <span class="constellation-letter" data-letter="A">A</span>
+                        <span class="constellation-letter" data-letter="L">L</span>
+                        <span class="constellation-letter" data-letter="E">E</span>
+                        <br>
+                        <span class="constellation-letter" data-letter="V">V</span>
+                        <span class="constellation-letter" data-letter="I">I</span>
+                        <span class="constellation-letter" data-letter="N">N</span>
+                        <span class="constellation-letter" data-letter="C">C</span>
+                        <span class="constellation-letter" data-letter="E">E</span>
+                        <span class="constellation-letter" data-letter="N">N</span>
+                        <span class="constellation-letter" data-letter="T">T</span>
+                    </div>
+                    <!-- Lines connecting letters (done via CSS) -->
+                    <div class="letter-lines"></div>
+                    
+                    <p class="profession constellation-title">
+                        <span class="twinkle-star">✦</span> 
+                        Computer Engineer 
+                        <span class="twinkle-star">✦</span>
+                    </p>
                 </div>
             </div>
         </div>
 
-        <!-- Very subtle stars background -->
-        <div class="stars"></div>
-        <div class="twinkling"></div>
+        <!-- Star background with twinkling -->
+        <div class="stars-container">
+            <div class="stars"></div>
+            <div class="twinkling"></div>
+            <div class="shooting-stars"></div>
+        </div>
     </section>
 
     <!-- About Section -->
@@ -324,7 +364,7 @@
                     <span>ESP8266</span>
                     <span>Firebase</span>
                     <span>Android</span>
-                    <span> Sensors</span>
+                    <span>Sensors</span>
                 </div>
                 <div class="project-links">
                     <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
