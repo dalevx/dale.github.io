@@ -55,6 +55,12 @@ body {
     z-index: 1000;
     padding: 1.5rem 2rem;
     background: transparent;
+    transition: background 0.3s, backdrop-filter 0.3s;
+}
+
+.navbar.scrolled {
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(10px);
 }
 
 .nav-content {
@@ -104,29 +110,42 @@ body {
     width: 100%;
 }
 
-/* Hero Section */
+/* Hero Section - Left-Right Layout */
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
     position: relative;
     z-index: 1;
     padding: 2rem;
 }
 
 .hero-content {
-    max-width: 800px;
+    max-width: 1200px;
+    width: 100%;
     z-index: 2;
 }
 
-/* Profile Image */
+.hero-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+
+/* Left side - Image */
+.hero-left {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
 .image-container {
     position: relative;
-    width: 280px;
-    height: 280px;
-    margin: 0 auto 2rem;
+    width: 350px;
+    height: 350px;
 }
 
 .profile-image {
@@ -156,12 +175,18 @@ body {
     opacity: 1;
 }
 
-/* Glowing Name - Elegant Pulse */
+/* Right side - Name and Title */
+.hero-right {
+    flex: 1;
+    text-align: left;
+}
+
 .glowing-name {
-    font-size: 5rem;
+    font-size: 5.5rem;
     font-weight: 600;
     letter-spacing: 4px;
-    margin-bottom: 0.5rem;
+    line-height: 1.1;
+    margin-bottom: 1rem;
     color: var(--text-primary);
     text-transform: uppercase;
     animation: elegantPulse 4s ease-in-out infinite;
@@ -177,10 +202,10 @@ body {
 }
 
 .profession {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 300;
     color: var(--text-secondary);
-    letter-spacing: 2px;
+    letter-spacing: 3px;
 }
 
 /* Sections */
@@ -288,6 +313,7 @@ section {
     justify-content: center;
     gap: 2rem;
     margin-bottom: 3rem;
+    flex-wrap: wrap;
 }
 
 .filter-btn {
@@ -504,8 +530,23 @@ footer {
 
 /* Responsive */
 @media (max-width: 968px) {
+    .hero-layout {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .hero-right {
+        text-align: center;
+    }
+    
     .glowing-name {
-        font-size: 3.5rem;
+        font-size: 4rem;
+    }
+    
+    .image-container {
+        width: 280px;
+        height: 280px;
     }
     
     .about-content,
@@ -525,12 +566,7 @@ footer {
     }
     
     .glowing-name {
-        font-size: 2.5rem;
-    }
-    
-    .image-container {
-        width: 200px;
-        height: 200px;
+        font-size: 3rem;
     }
     
     .project-grid {
@@ -539,6 +575,7 @@ footer {
     
     .project-filters {
         gap: 1rem;
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
     }
 }
