@@ -12,6 +12,7 @@ filterButtons.forEach(button => {
         projectCards.forEach(card => {
             if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
                 card.style.display = 'block';
+                card.style.animation = 'fadeInUp 0.5s ease';
             } else {
                 card.style.display = 'none';
             }
@@ -19,15 +20,55 @@ filterButtons.forEach(button => {
     });
 });
 
-// Smooth scrolling
+// PAGE TRANSITIONS - smooth scroll with fade effects
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+            // Get all sections
+            const sections = document.querySelectorAll('.hero, .about, .projects, .contact');
+            
+            // Fade out all sections
+            sections.forEach(section => {
+                section.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+            });
+            
+            // Scroll to target with offset para sa navbar
+            const navbarHeight = document.querySelector('.navbar').offsetHeight;
+            const targetPosition = targetElement.offsetTop - navbarHeight;
+            
+            window.scrollTo({
+                top: targetPosition,
                 behavior: 'smooth'
             });
+            
+            // Fade in ang target section after scroll
+            setTimeout(() => {
+                sections.forEach(section => {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                });
+                
+                // Add highlight effect sa target section
+                targetElement.style.transition = 'box-shadow 0.3s ease';
+                targetElement.style.boxShadow = 'inset 0 0 30px rgba(255,255,255,0.1)';
+                
+                setTimeout(() => {
+                    targetElement.style.boxShadow = 'none';
+                }, 500);
+            }, 400);
+            
+            // Update active state sa navigation
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.style.color = 'var(--text-dim)';
+            });
+            this.style.color = 'var(--text-primary)';
         }
     });
 });
@@ -94,3 +135,13 @@ if (contactForm) {
         contactForm.reset();
     });
 }
+
+// Fade in animation on page load
+window.addEventListener('load', () => {
+    const sections = document.querySelectorAll('.hero, .about, .projects, .contact');
+    sections.forEach((section, index) => {
+        setTimeout(() => {
+            section.style.animation = `fadeInUp 0.6s ease`;
+        }, index * 0.1);
+    });
+});
