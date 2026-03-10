@@ -88,6 +88,19 @@ body {
     transition: width 0.2s, height 0.2s, background 0.2s;
 }
 
+/* ===== SCROLL PROGRESS BAR ===== */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, #888, #fff, #888);
+    z-index: 1001;
+    transition: width 0.1s ease;
+    box-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
 /* TRANSITION EFFECTS FOR SECTIONS */
 .hero, .about, .projects, .contact, .education-section, .skills-progress-section, .hobbies-section, .certifications-section {
     transition: opacity 0.5s ease, transform 0.5s ease;
@@ -199,6 +212,12 @@ body {
 
 .nav-links a:hover::after {
     width: 100%;
+}
+
+/* Active navigation link style */
+.nav-links a.active {
+    color: var(--text-primary);
+    text-shadow: 0 0 10px rgba(255,255,255,0.3);
 }
 
 /* Navigation separator line */
@@ -562,6 +581,9 @@ section {
     text-align: center;
     border: 1px solid var(--border-color);
     transition: all 0.3s;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .stat-card:hover {
@@ -620,6 +642,9 @@ section {
     text-decoration: none;
     transition: all 0.3s;
     font-size: 0.95rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-link-item i {
@@ -648,6 +673,9 @@ section {
     border: 1px solid var(--border-color);
     border-radius: 8px;
     transition: all 0.3s;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .edu-card:hover {
@@ -706,6 +734,9 @@ section {
 
 .skill-progress-item {
     margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .skill-info {
@@ -762,7 +793,7 @@ section {
     }
 }
 
-/* ===== HOBBIES SECTION - IMPROVED ===== */
+/* ===== HOBBIES SECTION ===== */
 .hobbies-section {
     padding: 4rem 2rem;
     max-width: 1200px;
@@ -788,6 +819,9 @@ section {
     transition: all 0.3s;
     min-width: 140px;
     justify-content: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hobby-card i {
@@ -817,7 +851,7 @@ section {
     color: var(--text-primary);
 }
 
-/* ===== CERTIFICATIONS SECTION - IMPROVED ===== */
+/* ===== CERTIFICATIONS SECTION ===== */
 .certifications-section {
     padding: 4rem 2rem;
     max-width: 1200px;
@@ -840,6 +874,9 @@ section {
     border: 1px solid var(--border-color);
     border-radius: 8px;
     transition: all 0.3s;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .cert-card:hover {
@@ -937,7 +974,7 @@ section {
     transition: all 0.3s;
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s;
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s;
 }
 
 .project-card:hover {
