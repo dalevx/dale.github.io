@@ -42,11 +42,12 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// 3D TEXT THAT FOLLOWS CURSOR - IMPROVED
+// 3D CURSOR EFFECT
 const hero = document.querySelector('.hero');
-const name3D = document.querySelector('.name-3d');
+const nameFirst = document.querySelector('.name-first');
+const nameLast = document.querySelector('.name-last');
 
-if (name3D) {
+if (nameFirst && nameLast) {
     let timeout;
     
     hero.addEventListener('mousemove', (e) => {
@@ -55,26 +56,32 @@ if (name3D) {
         const mouseX = e.clientX - rect.left;
         const mouseY = e.clientY - rect.top;
         
-        // Calculate rotation based on mouse position
+        // Calculate center
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
         
-        // Mas malaking rotation (20 degrees max) para mas obvious
-        const rotateY = ((mouseX - centerX) / centerX) * 20;
-        const rotateX = ((mouseY - centerY) / centerY) * -20;
+        // Calculate rotation (max 8 degrees lang para subtle)
+        const rotateY = ((mouseX - centerX) / centerX) * 8;
+        const rotateX = ((mouseY - centerY) / centerY) * -8;
         
-        // Apply 3D rotation with smoother transition
-        name3D.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(30px)`;
+        // Apply rotation to each name with different intensity
+        nameFirst.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+        nameLast.style.transform = `perspective(1000px) rotateX(${rotateX * 1.2}deg) rotateY(${rotateY * 1.2}deg) translateZ(30px)`;
+        
+        // Add transition for smoothness
+        nameFirst.style.transition = 'transform 0.1s ease-out';
+        nameLast.style.transition = 'transform 0.1s ease-out';
         
         // Clear any existing timeout
         clearTimeout(timeout);
     });
     
-    // Reset when mouse leaves - may delay para smooth
+    // Reset when mouse leaves (with delay para smooth)
     hero.addEventListener('mouseleave', () => {
         timeout = setTimeout(() => {
-            name3D.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(30px)';
-        }, 100);
+            nameFirst.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+            nameLast.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+        }, 200);
     });
 }
 
