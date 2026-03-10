@@ -89,7 +89,7 @@ body {
 }
 
 /* TRANSITION EFFECTS FOR SECTIONS */
-.hero, .about, .projects, .contact, .education-section, .skills-progress-section {
+.hero, .about, .projects, .contact, .education-section, .skills-progress-section, .hobbies-section, .certifications-section {
     transition: opacity 0.5s ease, transform 0.5s ease;
     opacity: 1;
     transform: translateY(0);
@@ -762,6 +762,117 @@ section {
     }
 }
 
+/* ===== HOBBIES SECTION ===== */
+.hobbies-section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: 1px solid var(--border-color);
+}
+
+.hobbies-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.hobby-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    min-width: 150px;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.hobby-card i {
+    font-size: 2.5rem;
+    color: var(--text-dim);
+    transition: all 0.3s;
+}
+
+.hobby-card span {
+    color: var(--text-dim);
+    font-size: 1rem;
+    font-weight: 300;
+    transition: all 0.3s;
+}
+
+.hobby-card:hover {
+    border-color: var(--text-primary);
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.02);
+}
+
+.hobby-card:hover i {
+    color: var(--text-primary);
+    transform: scale(1.1);
+}
+
+.hobby-card:hover span {
+    color: var(--text-primary);
+}
+
+/* ===== CERTIFICATIONS SECTION ===== */
+.certifications-section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: 1px solid var(--border-color);
+}
+
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.cert-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.cert-card:hover {
+    border-color: var(--text-primary);
+    transform: translateX(5px);
+    background: rgba(255,255,255,0.02);
+}
+
+.cert-icon i {
+    font-size: 2rem;
+    color: var(--text-dim);
+    transition: all 0.3s;
+}
+
+.cert-card:hover .cert-icon i {
+    color: var(--text-primary);
+    transform: scale(1.1);
+}
+
+.cert-content h3 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 0.3rem;
+}
+
+.cert-issuer {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    font-family: 'Courier New', monospace;
+}
+
 /* Projects Section */
 .projects {
     background-color: transparent;
@@ -1162,6 +1273,27 @@ footer {
     
     .skills-progress-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .hobbies-grid {
+        gap: 1rem;
+    }
+    
+    .hobby-card {
+        min-width: 120px;
+        padding: 1.5rem;
+    }
+    
+    .hobby-card i {
+        font-size: 2rem;
+    }
+    
+    .certifications-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cert-card {
+        padding: 1.2rem;
     }
 }
 
