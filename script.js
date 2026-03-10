@@ -73,6 +73,38 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// SCROLL TRANSITION - pag nag-scroll pababa, may lalabas na effects
+const observerOptions = {
+    threshold: 0.2, // 20% ng section ang visible bago mag-trigger
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Kapag pumasok sa view yung section
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            
+            // Add subtle glow effect
+            entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease, box-shadow 0.6s ease';
+            entry.target.style.boxShadow = 'inset 0 0 30px rgba(255,255,255,0.05)';
+            
+            setTimeout(() => {
+                entry.target.style.boxShadow = 'none';
+            }, 600);
+        }
+    });
+}, observerOptions);
+
+// Apply sa lahat ng sections at project cards
+document.querySelectorAll('.hero, .about, .projects, .contact, .project-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+});
+
 // Navbar transparency on scroll
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
