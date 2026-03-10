@@ -1,12 +1,12 @@
-/* Monochrome Engineering Theme - Pure Black */
+/* Professional 3D Logo Style - Bevel & Extrude */
 :root {
     --pure-black: #000000;
     --dark-grey: #0a0a0a;
     --medium-grey: #1a1a1a;
     --light-grey: #333333;
     --text-primary: #ffffff;
-    --text-secondary: #b0b0b0;
-    --text-dim: #666666;
+    --text-secondary: #f0f0f0;
+    --text-dim: #888888;
     --border-color: #222222;
 }
 
@@ -85,7 +85,7 @@ body {
 
 .nav-links a {
     text-decoration: none;
-    color: var(--text-secondary);
+    color: var(--text-dim);
     font-size: 0.95rem;
     font-weight: 300;
     letter-spacing: 1px;
@@ -104,7 +104,7 @@ body {
     background: linear-gradient(90deg, transparent, var(--text-dim), transparent);
 }
 
-/* Hero Section - Hexagon + 3D Text */
+/* Hero Section - Hexagon + Professional 3D Text */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -112,7 +112,6 @@ body {
     justify-content: center;
     position: relative;
     padding: 6rem 2rem 2rem 2rem;
-    perspective: 1200px;
 }
 
 .hero-content {
@@ -178,76 +177,84 @@ body {
     opacity: 1;
 }
 
-/* RIGHT SIDE - 3D Name - PINALAKI AT PINAGANDA */
+/* RIGHT SIDE - Professional 3D Logo Style (Bevel & Extrude) */
 .hero-right {
     flex: 1;
     text-align: left;
 }
 
-.name-3d-container {
-    transform-style: preserve-3d;
-    margin-bottom: 1rem;
-    perspective: 1200px;
+.name-container {
+    margin-bottom: 1.5rem;
 }
 
-.name-3d {
-    transform-style: preserve-3d;
-    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-    display: inline-block;
-    filter: drop-shadow(0 0 20px rgba(255,255,255,0.15));
-}
-
-.name-first-3d {
-    font-size: 6.5rem; /* PINALAKI (from 4.5rem to 6.5rem) */
+.name-first {
+    font-size: 6rem;
     font-weight: 800;
     line-height: 1.1;
-    color: var(--text-primary);
-    letter-spacing: 8px;
-    margin-bottom: 0.5rem;
+    color: #ffffff;
+    letter-spacing: 6px;
     text-transform: uppercase;
     font-family: 'Segoe UI', 'Inter', sans-serif;
-    display: block;
-    transform: translateZ(50px); /* Mas malalim na 3D */
+    margin-bottom: 0.3rem;
+    
+    /* Bevel & Extrude Effect */
     text-shadow: 
-        3px 3px 0 var(--text-dim),
-        6px 6px 0 rgba(255,255,255,0.1),
-        9px 9px 0 rgba(255,255,255,0.05);
+        /* Front bevel - light */
+        1px 1px 0 #cccccc,
+        2px 2px 0 #bbbbbb,
+        /* Extrude layers */
+        3px 3px 0 #aaaaaa,
+        4px 4px 0 #999999,
+        5px 5px 0 #888888,
+        6px 6px 0 #777777,
+        7px 7px 0 #666666,
+        8px 8px 0 #555555,
+        9px 9px 0 #444444,
+        10px 10px 0 #333333,
+        /* Bottom shadow */
+        12px 12px 10px rgba(0,0,0,0.5);
 }
 
-.name-last-3d {
-    font-size: 5.5rem; /* PINALAKI (from 4rem to 5.5rem) */
+.name-last {
+    font-size: 5rem;
     font-weight: 600;
     line-height: 1.1;
-    color: var(--text-secondary);
-    letter-spacing: 10px;
+    color: #f0f0f0;
+    letter-spacing: 8px;
     text-transform: uppercase;
     font-family: 'Segoe UI', 'Inter', sans-serif;
-    display: block;
-    transform: translateZ(70px); /* Mas malalim pa */
+    
+    /* Bevel & Extrude Effect - slightly lighter */
     text-shadow: 
-        3px 3px 0 var(--text-dim),
-        6px 6px 0 rgba(255,255,255,0.1),
-        9px 9px 0 rgba(255,255,255,0.05);
+        /* Front bevel - light */
+        1px 1px 0 #dddddd,
+        2px 2px 0 #cccccc,
+        /* Extrude layers */
+        3px 3px 0 #bbbbbb,
+        4px 4px 0 #aaaaaa,
+        5px 5px 0 #999999,
+        6px 6px 0 #888888,
+        7px 7px 0 #777777,
+        8px 8px 0 #666666,
+        /* Bottom shadow */
+        10px 10px 8px rgba(0,0,0,0.5);
 }
 
-/* Profession with engineering brackets */
 .profession {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 300;
-    color: var(--text-dim);
+    color: #888888;
     letter-spacing: 4px;
     display: flex;
     align-items: center;
     gap: 1.5rem;
     font-family: 'Courier New', monospace;
     margin-top: 2rem;
-    transform: translateZ(30px);
-    text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
 }
 
 .separator {
-    color: var(--text-dim);
-    font-size: 2rem;
+    color: #666666;
+    font-size: 1.8rem;
     font-weight: 300;
 }
 
@@ -289,7 +296,7 @@ section {
 
 .about-description {
     font-size: 1.2rem;
-    color: var(--text-secondary);
+    color: var(--text-dim);
     margin-bottom: 2rem;
     font-weight: 300;
     line-height: 1.8;
@@ -319,7 +326,7 @@ section {
     padding: 0.4rem 1rem;
     background: transparent;
     border: 1px solid var(--border-color);
-    color: var(--text-secondary);
+    color: var(--text-dim);
     font-size: 0.9rem;
     transition: all 0.3s;
     font-family: 'Courier New', monospace;
@@ -352,7 +359,7 @@ section {
 }
 
 .stat-label {
-    color: var(--text-secondary);
+    color: var(--text-dim);
     font-size: 0.85rem;
     font-weight: 300;
 }
@@ -434,7 +441,7 @@ section {
 }
 
 .project-description {
-    color: var(--text-secondary);
+    color: var(--text-dim);
     font-size: 0.95rem;
     margin-bottom: 1.5rem;
     line-height: 1.6;
@@ -462,7 +469,7 @@ section {
 
 .project-link {
     text-decoration: none;
-    color: var(--text-secondary);
+    color: var(--text-dim);
     font-size: 0.9rem;
     display: flex;
     align-items: center;
@@ -513,7 +520,7 @@ section {
 }
 
 .contact-item p {
-    color: var(--text-secondary);
+    color: var(--text-dim);
     font-size: 0.9rem;
     font-weight: 300;
     font-family: 'Courier New', monospace;
@@ -607,11 +614,11 @@ footer {
         height: 320px;
     }
     
-    .name-first-3d {
+    .name-first {
         font-size: 4.5rem;
     }
     
-    .name-last-3d {
+    .name-last {
         font-size: 4rem;
     }
     
@@ -636,12 +643,12 @@ footer {
         height: 280px;
     }
     
-    .name-first-3d {
+    .name-first {
         font-size: 3.5rem;
         letter-spacing: 4px;
     }
     
-    .name-last-3d {
+    .name-last {
         font-size: 3rem;
         letter-spacing: 6px;
     }
@@ -667,11 +674,11 @@ footer {
         height: 220px;
     }
     
-    .name-first-3d {
+    .name-first {
         font-size: 2.5rem;
     }
     
-    .name-last-3d {
+    .name-last {
         font-size: 2.2rem;
     }
 }
