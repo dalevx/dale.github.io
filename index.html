@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Navigation with separator line -->
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-content">
             <a href="#home" class="logo">dale.gg</a>
@@ -24,62 +24,36 @@
         <div class="nav-line"></div>
     </nav>
 
-    <!-- Hero Section - Hexagon Picture with Name Behind -->
+    <!-- Hero Section - Monochrome Engineering Look -->
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-layout">
-                <!-- Center - Hexagon Image -->
+                <!-- Center - Image with blending -->
                 <div class="hero-center">
-                    <div class="hexagon-container">
-                        <!-- Hexagon shape -->
-                        <div class="hexagon">
-                            <img src="dale-pic.jpg" alt="Dale Vincent Dimaano" class="hexagon-image">
-                            <div class="hexagon-glow"></div>
-                        </div>
-                        
-                        <!-- Name behind the hexagon (2 lines) -->
-                        <div class="name-behind">
-                            <div class="name-line top-line">
-                                <span class="name-char">D</span>
-                                <span class="name-char">A</span>
-                                <span class="name-char">L</span>
-                                <span class="name-char">E</span>
-                                <span class="name-char space"> </span>
-                                <span class="name-char">V</span>
-                                <span class="name-char">I</span>
-                                <span class="name-char">N</span>
-                                <span class="name-char">C</span>
-                                <span class="name-char">E</span>
-                                <span class="name-char">N</span>
-                                <span class="name-char">T</span>
-                            </div>
-                            <div class="name-line bottom-line">
-                                <span class="name-char">D</span>
-                                <span class="name-char">I</span>
-                                <span class="name-char">M</span>
-                                <span class="name-char">A</span>
-                                <span class="name-char">A</span>
-                                <span class="name-char">N</span>
-                                <span class="name-char">O</span>
-                            </div>
+                    <div class="image-container">
+                        <div class="image-wrapper">
+                            <img src="dale-pic.jpg" alt="Dale Vincent Dimaano" class="profile-image">
                         </div>
                     </div>
                     
-                    <!-- Profession below -->
+                    <!-- Name below image -->
+                    <div class="name-container">
+                        <h1 class="name-first">DALE VINCENT</h1>
+                        <h2 class="name-last">DIMAANO</h2>
+                    </div>
+                    
+                    <!-- Profession -->
                     <p class="profession">
-                        <span class="twinkle-star">✦</span> 
+                        <span class="separator">[</span> 
                         Computer Engineer 
-                        <span class="twinkle-star">✦</span>
+                        <span class="separator">]</span>
                     </p>
                 </div>
             </div>
         </div>
 
-        <!-- PURE GALAXY BACKGROUND -->
-        <div class="galaxy-bg">
-            <div class="galaxy-stars"></div>
-            <div class="galaxy-nebula"></div>
-        </div>
+        <!-- PURE BLACK BACKGROUND -->
+        <div class="pure-black-bg"></div>
     </section>
 
     <!-- About Section -->
@@ -94,7 +68,7 @@
                 </p>
                 
                 <div class="skills">
-                    <h3>Technologies I work with:</h3>
+                    <h3>Technologies i work with:</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">C/C++</span>
                         <span class="skill-tag">Python</span>
@@ -140,7 +114,6 @@
         </div>
 
         <div class="project-grid">
-            <!-- ========== EMBEDDED SYSTEMS PROJECTS (3) ========== -->
             <!-- Project Card 1 - Embedded -->
             <div class="project-card" data-category="embedded">
                 <div class="project-header">
@@ -152,7 +125,7 @@
                 </div>
                 <p class="project-description">
                     Arduino-based home automation system with voice control and mobile app integration. 
-                    Features temperature monitoring, light control, and security alerts with real-time notifications.
+                    Features temperature monitoring, light control, and security alerts.
                 </p>
                 <div class="project-tech">
                     <span>Arduino</span>
@@ -177,7 +150,7 @@
                 </div>
                 <p class="project-description">
                     PID-controlled line follower robot using Arduino and IR sensors. 
-                    Achieved smooth navigation at speeds up to 1.5 m/s with optimized control algorithms.
+                    Achieved smooth navigation at speeds up to 1.5 m/s.
                 </p>
                 <div class="project-tech">
                     <span>Arduino</span>
@@ -202,7 +175,7 @@
                 </div>
                 <p class="project-description">
                     Autonomous RC car with ultrasonic sensors and servo-controlled steering. 
-                    Implements real-time obstacle detection and path planning algorithms.
+                    Implements real-time obstacle detection and path planning.
                 </p>
                 <div class="project-tech">
                     <span>Arduino</span>
@@ -216,7 +189,6 @@
                 </div>
             </div>
 
-            <!-- ========== SOFTWARE PROJECTS (3) ========== -->
             <!-- Project Card 4 - Software -->
             <div class="project-card" data-category="software">
                 <div class="project-header">
@@ -228,7 +200,7 @@
                 </div>
                 <p class="project-description">
                     Implemented A* and Dijkstra algorithms for robot navigation in dynamic environments. 
-                    Achieved 30% faster path computation compared to traditional methods with visualization.
+                    Achieved 30% faster path computation compared to traditional methods.
                 </p>
                 <div class="project-tech">
                     <span>Python</span>
@@ -292,7 +264,6 @@
                 </div>
             </div>
 
-            <!-- ========== IOT PROJECTS (3) ========== -->
             <!-- Project Card 7 - IoT -->
             <div class="project-card" data-category="iot">
                 <div class="project-header">
@@ -304,7 +275,7 @@
                 </div>
                 <p class="project-description">
                     IoT-based soil monitoring system using ESP32 and various sensors. 
-                    Real-time data collection and analysis for optimal crop growth with cloud dashboard.
+                    Real-time data collection and analysis for optimal crop growth.
                 </p>
                 <div class="project-tech">
                     <span>ESP32</span>
@@ -329,7 +300,7 @@
                 </div>
                 <p class="project-description">
                     Wearable device for real-time health monitoring using ESP32 and biometric sensors. 
-                    Sends alerts to doctors and family members in case of emergency.
+                    Sends alerts to doctors in case of emergency.
                 </p>
                 <div class="project-tech">
                     <span>ESP32</span>
