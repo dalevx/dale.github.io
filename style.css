@@ -39,6 +39,33 @@ body {
     z-index: -1;
 }
 
+/* TRANSITION EFFECTS FOR SECTIONS */
+.hero, .about, .projects, .contact {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero.fade-out, .about.fade-out, .projects.fade-out, .contact.fade-out {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.hero.fade-in, .about.fade-in, .projects.fade-in, .contact.fade-in {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Navigation */
 .navbar {
     position: fixed;
@@ -47,7 +74,7 @@ body {
     z-index: 1000;
     padding: 1.5rem 2rem 0.5rem 2rem;
     background: transparent;
-    transition: background 0.3s;
+    transition: background 0.3s, backdrop-filter 0.3s;
 }
 
 .navbar.scrolled {
@@ -89,12 +116,28 @@ body {
     font-size: 0.95rem;
     font-weight: 300;
     letter-spacing: 1px;
-    transition: color 0.3s;
+    transition: color 0.3s, text-shadow 0.3s;
     position: relative;
 }
 
 .nav-links a:hover {
     color: var(--text-primary);
+    text-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--text-primary);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 /* Navigation separator line */
@@ -148,7 +191,7 @@ body {
     clip-path: polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%);
     overflow: hidden;
     box-shadow: 0 0 30px rgba(255,255,255,0.1);
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .hexagon-image {
@@ -172,6 +215,7 @@ body {
 
 .hexagon:hover {
     transform: scale(1.02);
+    box-shadow: 0 0 40px rgba(255,255,255,0.2);
 }
 
 .hexagon:hover .hexagon-glow {
@@ -216,6 +260,18 @@ body {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    transition: text-shadow 0.3s, transform 0.3s;
+}
+
+.name-first:hover {
+    transform: translateZ(20px);
+    text-shadow: 
+        2px 2px 0 #aaa,
+        4px 4px 0 #999,
+        6px 6px 0 #888,
+        8px 8px 0 #777,
+        10px 10px 0 #666,
+        12px 12px 15px rgba(0,0,0,0.7);
 }
 
 /* VINCENT - Line 2 */
@@ -245,6 +301,18 @@ body {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    transition: text-shadow 0.3s, transform 0.3s;
+}
+
+.name-middle:hover {
+    transform: translateZ(25px);
+    text-shadow: 
+        2px 2px 0 #aaa,
+        4px 4px 0 #999,
+        6px 6px 0 #888,
+        8px 8px 0 #777,
+        10px 10px 0 #666,
+        12px 12px 15px rgba(0,0,0,0.7);
 }
 
 /* DIMAANO - Line 3 */
@@ -273,6 +341,18 @@ body {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    transition: text-shadow 0.3s, transform 0.3s;
+}
+
+.name-last:hover {
+    transform: translateZ(30px);
+    text-shadow: 
+        2px 2px 0 #aaa,
+        4px 4px 0 #999,
+        6px 6px 0 #888,
+        8px 8px 0 #777,
+        10px 10px 0 #666,
+        12px 12px 15px rgba(0,0,0,0.7);
 }
 
 .profession {
@@ -291,6 +371,12 @@ body {
     color: #666;
     font-size: 1.8rem;
     font-weight: 300;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.separator:hover {
+    color: #aaa;
+    transform: scale(1.1);
 }
 
 /* Sections */
@@ -370,6 +456,7 @@ section {
 .skill-tag:hover {
     border-color: var(--text-primary);
     color: var(--text-primary);
+    transform: translateY(-2px);
 }
 
 .stats-container {
@@ -383,6 +470,12 @@ section {
     padding: 1.5rem;
     text-align: center;
     border: 1px solid var(--border-color);
+    transition: all 0.3s;
+}
+
+.stat-card:hover {
+    border-color: var(--text-dim);
+    transform: translateY(-5px);
 }
 
 .stat-number {
@@ -443,6 +536,7 @@ section {
 
 .project-card:hover {
     border-color: var(--text-dim);
+    transform: translateY(-5px);
 }
 
 .project-header {
@@ -540,6 +634,11 @@ section {
     display: flex;
     align-items: center;
     gap: 1rem;
+    transition: transform 0.3s;
+}
+
+.contact-item:hover {
+    transform: translateX(5px);
 }
 
 .contact-item i {
@@ -576,12 +675,14 @@ section {
     color: var(--text-primary);
     font-family: 'Courier New', monospace;
     font-weight: 300;
+    transition: all 0.3s;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
     border-color: var(--text-dim);
+    transform: scale(1.02);
 }
 
 .form-group input::placeholder,
@@ -607,6 +708,7 @@ section {
 
 .btn-primary:hover {
     border-color: var(--text-primary);
+    transform: translateY(-2px);
 }
 
 /* Footer */
