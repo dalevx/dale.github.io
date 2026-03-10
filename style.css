@@ -88,6 +88,13 @@ body {
     transition: width 0.2s, height 0.2s, background 0.2s;
 }
 
+/* Hide glow cursor on mobile */
+@media (max-width: 768px) {
+    .glow-cursor {
+        display: none;
+    }
+}
+
 /* ===== SCROLL PROGRESS BAR ===== */
 .scroll-progress {
     position: fixed;
@@ -146,7 +153,7 @@ body {
     width: 100%;
     top: 0;
     z-index: 1000;
-    padding: 1.5rem 2rem 0.5rem 2rem;
+    padding: 1rem 1rem 0.5rem 1rem;
     background: transparent;
     transition: background 0.3s, backdrop-filter 0.3s;
 }
@@ -163,6 +170,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding-bottom: 0.8rem;
+    flex-wrap: wrap;
 }
 
 .logo {
@@ -181,7 +189,7 @@ body {
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 3rem;
+    gap: 2rem;
 }
 
 .nav-links a {
@@ -192,6 +200,7 @@ body {
     letter-spacing: 1px;
     transition: color 0.3s, text-shadow 0.3s;
     position: relative;
+    white-space: nowrap;
 }
 
 .nav-links a:hover {
@@ -234,7 +243,7 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    padding: 6rem 2rem 2rem 2rem;
+    padding: 5rem 1rem 2rem 1rem;
     perspective: 1200px;
 }
 
@@ -249,7 +258,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5rem;
+    gap: 3rem;
     flex-wrap: wrap;
 }
 
@@ -257,15 +266,15 @@ body {
 .hero-left {
     flex: 1;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     position: relative;
     z-index: 2;
 }
 
 .hexagon-container {
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: min(350px, 80vw);
+    height: min(350px, 80vw);
 }
 
 /* ===== HEXAGON GLOW AND BORDER ===== */
@@ -353,30 +362,30 @@ body {
 /* RIGHT SIDE - 3 LINES NAME with OSWALD FONT */
 .hero-right {
     flex: 1;
-    text-align: left;
+    text-align: center;
     position: relative;
     z-index: 2;
 }
 
 .name-container {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     position: relative;
 }
 
 /* DALE - Line 1 */
 .name-first {
-    font-size: 5.5rem;
+    font-size: clamp(2.5rem, 8vw, 5.5rem);
     font-weight: 700;
     line-height: 1.1;
     color: #ffffff;
-    letter-spacing: 4px;
+    letter-spacing: clamp(2px, 2vw, 4px);
     text-transform: uppercase;
     font-family: 'Oswald', sans-serif;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.1rem;
     display: inline-block;
     transition: transform 0.3s ease;
     
-    /* 3D Effect */
+    /* 3D Effect - adjusted for mobile */
     text-shadow: 
         1px 1px 0 #aaa,
         2px 2px 0 #999,
@@ -396,14 +405,14 @@ body {
 
 /* VINCENT - Line 2 */
 .name-middle {
-    font-size: 5rem;
+    font-size: clamp(2.2rem, 7vw, 5rem);
     font-weight: 600;
     line-height: 1.1;
     color: #f5f5f5;
-    letter-spacing: 4px;
+    letter-spacing: clamp(2px, 2vw, 4px);
     text-transform: uppercase;
     font-family: 'Oswald', sans-serif;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.1rem;
     display: inline-block;
     transition: transform 0.3s ease;
     
@@ -427,11 +436,11 @@ body {
 
 /* DIMAANO - Line 3 */
 .name-last {
-    font-size: 4.8rem;
+    font-size: clamp(2rem, 6.5vw, 4.8rem);
     font-weight: 500;
     line-height: 1.1;
     color: #f0f0f0;
-    letter-spacing: 6px;
+    letter-spacing: clamp(3px, 2.5vw, 6px);
     text-transform: uppercase;
     font-family: 'Oswald', sans-serif;
     display: inline-block;
@@ -456,38 +465,40 @@ body {
 }
 
 .profession {
-    font-size: 1.4rem;
+    font-size: clamp(1rem, 4vw, 1.4rem);
     font-weight: 300;
     color: #888;
-    letter-spacing: 4px;
+    letter-spacing: clamp(2px, 2vw, 4px);
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    justify-content: center;
+    gap: clamp(0.5rem, 3vw, 1.5rem);
     font-family: 'Courier New', monospace;
-    margin-top: 2rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
 }
 
 .separator {
     color: #666;
-    font-size: 1.8rem;
+    font-size: clamp(1.2rem, 5vw, 1.8rem);
     font-weight: 300;
     transition: color 0.3s, transform 0.3s;
 }
 
 /* Sections */
 section {
-    padding: 6rem 2rem;
+    padding: clamp(3rem, 8vw, 6rem) 1rem;
     position: relative;
     background-color: var(--pure-black);
 }
 
 .section-title {
     text-align: center;
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 6vw, 2rem);
     font-weight: 300;
-    margin-bottom: 4rem;
+    margin-bottom: clamp(2rem, 6vw, 4rem);
     color: var(--text-primary);
-    letter-spacing: 4px;
+    letter-spacing: clamp(2px, 2vw, 4px);
     font-family: 'Courier New', monospace;
 }
 
@@ -506,12 +517,19 @@ section {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 4rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 769px) {
+    .about-content {
+        grid-template-columns: 2fr 1fr;
+        gap: 4rem;
+    }
 }
 
 .about-description {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 4vw, 1.2rem);
     color: var(--text-dim);
     margin-bottom: 2rem;
     font-weight: 300;
@@ -524,7 +542,7 @@ section {
 }
 
 .skills h3 {
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 4vw, 1.1rem);
     font-weight: 300;
     margin-bottom: 1.5rem;
     color: var(--text-primary);
@@ -535,15 +553,22 @@ section {
 .skill-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 0.8rem;
+    justify-content: center;
+}
+
+@media (min-width: 769px) {
+    .skill-tags {
+        justify-content: flex-start;
+    }
 }
 
 .skill-tag {
-    padding: 0.6rem 1.2rem;
+    padding: 0.5rem 1rem;
     background: transparent;
     border: 1px solid var(--border-color);
     color: var(--text-dim);
-    font-size: 1rem;
+    font-size: 0.9rem;
     transition: all 0.3s;
     font-family: 'Courier New', monospace;
     display: inline-flex;
@@ -553,7 +578,7 @@ section {
 }
 
 .skill-tag i {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--text-dim);
     transition: color 0.3s;
 }
@@ -572,12 +597,12 @@ section {
 .stats-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    gap: 0.8rem;
 }
 
 .stat-card {
     background: var(--dark-grey);
-    padding: 1.5rem;
+    padding: 1rem;
     text-align: center;
     border: 1px solid var(--border-color);
     transition: all 0.3s;
@@ -592,7 +617,7 @@ section {
 }
 
 .stat-number {
-    font-size: 1.8rem;
+    font-size: clamp(1.5rem, 5vw, 1.8rem);
     font-weight: 300;
     color: var(--text-primary);
     margin-bottom: 0.3rem;
@@ -601,20 +626,20 @@ section {
 
 .stat-label {
     color: var(--text-dim);
-    font-size: 0.85rem;
+    font-size: clamp(0.75rem, 3vw, 0.85rem);
     font-weight: 300;
 }
 
 /* ===== SOCIAL LINKS SECTION ===== */
 .social-links-section {
     max-width: 1200px;
-    margin: 3rem auto 0;
+    margin: 2rem auto 0;
     padding-top: 2rem;
     border-top: 1px solid var(--border-color);
 }
 
 .subsection-title {
-    font-size: 1.3rem;
+    font-size: clamp(1.1rem, 4vw, 1.3rem);
     font-weight: 300;
     color: var(--text-primary);
     letter-spacing: 2px;
@@ -626,29 +651,29 @@ section {
 .social-links-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 1rem;
     justify-content: center;
 }
 
 .social-link-item {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
-    padding: 0.8rem 1.5rem;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
     background: transparent;
     border: 1px solid var(--border-color);
     border-radius: 50px;
     color: var(--text-dim);
     text-decoration: none;
     transition: all 0.3s;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-link-item i {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 .social-link-item:hover {
@@ -660,15 +685,16 @@ section {
 
 /* ===== EDUCATION SECTION ===== */
 .education-section {
-    padding: 4rem 2rem;
+    padding: 3rem 1rem;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .edu-card {
     display: flex;
-    gap: 2rem;
-    padding: 1.5rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.2rem;
     margin-bottom: 1rem;
     border: 1px solid var(--border-color);
     border-radius: 8px;
@@ -676,6 +702,14 @@ section {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (min-width: 769px) {
+    .edu-card {
+        flex-direction: row;
+        gap: 2rem;
+        padding: 1.5rem;
+    }
 }
 
 .edu-card:hover {
@@ -693,7 +727,7 @@ section {
 }
 
 .edu-content h3 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 400;
     color: var(--text-primary);
     margin-bottom: 0.3rem;
@@ -720,7 +754,7 @@ section {
 
 /* ===== SKILLS PROGRESS SECTION ===== */
 .skills-progress-section {
-    padding: 4rem 2rem;
+    padding: 3rem 1rem;
     max-width: 1200px;
     margin: 0 auto;
     border-top: 1px solid var(--border-color);
@@ -728,12 +762,19 @@ section {
 
 .skills-progress-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 769px) {
+    .skills-progress-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
 }
 
 .skill-progress-item {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -795,7 +836,7 @@ section {
 
 /* ===== HOBBIES SECTION ===== */
 .hobbies-section {
-    padding: 4rem 2rem;
+    padding: 3rem 1rem;
     max-width: 1200px;
     margin: 0 auto;
     border-top: 1px solid var(--border-color);
@@ -804,20 +845,20 @@ section {
 .hobbies-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 1rem;
     justify-content: center;
 }
 
 .hobby-card {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
-    padding: 0.8rem 1.5rem;
+    gap: 0.6rem;
+    padding: 0.6rem 1.2rem;
     background: transparent;
     border: 1px solid var(--border-color);
     border-radius: 50px;
     transition: all 0.3s;
-    min-width: 140px;
+    min-width: 120px;
     justify-content: center;
     opacity: 0;
     transform: translateY(30px);
@@ -825,14 +866,14 @@ section {
 }
 
 .hobby-card i {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: var(--text-dim);
     transition: all 0.3s;
 }
 
 .hobby-card span {
     color: var(--text-dim);
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 300;
     transition: all 0.3s;
 }
@@ -853,7 +894,7 @@ section {
 
 /* ===== CERTIFICATIONS SECTION ===== */
 .certifications-section {
-    padding: 4rem 2rem;
+    padding: 3rem 1rem;
     max-width: 1200px;
     margin: 0 auto;
     border-top: 1px solid var(--border-color);
@@ -861,15 +902,22 @@ section {
 
 .certifications-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@media (min-width: 769px) {
+    .certifications-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
 }
 
 .cert-card {
     display: flex;
     align-items: center;
-    gap: 1.2rem;
-    padding: 1.2rem;
+    gap: 1rem;
+    padding: 1rem;
     background: transparent;
     border: 1px solid var(--border-color);
     border-radius: 8px;
@@ -894,7 +942,7 @@ section {
 }
 
 .cert-icon i {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: var(--text-dim);
     transition: all 0.3s;
 }
@@ -909,7 +957,7 @@ section {
 }
 
 .cert-content h3 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 400;
     color: var(--text-primary);
     margin-bottom: 0.2rem;
@@ -917,7 +965,7 @@ section {
 
 .cert-issuer {
     color: var(--text-dim);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-family: 'Courier New', monospace;
 }
 
@@ -931,8 +979,8 @@ section {
 .project-filters {
     display: flex;
     justify-content: center;
-    gap: 2rem;
-    margin-bottom: 3rem;
+    gap: 1rem;
+    margin-bottom: 2rem;
     flex-wrap: wrap;
     position: relative;
     z-index: 2;
@@ -942,28 +990,43 @@ section {
     background: transparent;
     border: none;
     color: var(--text-dim);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     cursor: pointer;
     transition: color 0.3s;
     font-weight: 300;
     letter-spacing: 1px;
-    padding: 0;
+    padding: 0.5rem 1rem;
     font-family: 'Courier New', monospace;
+    border: 1px solid transparent;
 }
 
 .filter-btn:hover,
 .filter-btn.active {
     color: var(--text-primary);
+    border-color: var(--border-color);
+    border-radius: 30px;
 }
 
 .project-grid {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
     position: relative;
     z-index: 2;
+}
+
+@media (min-width: 640px) {
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .project-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 .project-card {
@@ -986,8 +1049,14 @@ section {
 .project-img-container {
     position: relative;
     width: 100%;
-    height: 200px;
+    height: 180px;
     overflow: hidden;
+}
+
+@media (min-width: 769px) {
+    .project-img-container {
+        height: 200px;
+    }
 }
 
 .project-img {
@@ -1012,14 +1081,16 @@ section {
 }
 
 .project-content {
-    padding: 1.5rem;
+    padding: 1.2rem;
 }
 
 .project-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .project-title {
@@ -1031,16 +1102,16 @@ section {
 
 .project-title i {
     color: var(--text-dim);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 .project-title h3 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 400;
 }
 
 .project-badge {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     background: var(--text-dim);
     color: var(--pure-black);
     padding: 0.2rem 0.5rem;
@@ -1048,30 +1119,31 @@ section {
     margin-left: 0.5rem;
     font-weight: 300;
     letter-spacing: 1px;
+    white-space: nowrap;
 }
 
 .project-description {
     color: var(--text-dim);
-    font-size: 0.95rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
+    font-size: 0.9rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
     font-weight: 300;
 }
 
 .project-tech {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.8rem;
-    margin-bottom: 1.5rem;
+    gap: 0.6rem;
+    margin-bottom: 1.2rem;
 }
 
 .project-tech span {
     color: var(--text-dim);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 300;
     font-family: 'Courier New', monospace;
     background: rgba(255,255,255,0.05);
-    padding: 0.3rem 0.8rem;
+    padding: 0.25rem 0.6rem;
     border-radius: 4px;
     display: inline-flex;
     align-items: center;
@@ -1079,19 +1151,20 @@ section {
 }
 
 .project-tech span i {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: var(--text-dim);
 }
 
 .project-links {
     display: flex;
-    gap: 1.5rem;
+    gap: 1.2rem;
+    flex-wrap: wrap;
 }
 
 .project-link {
     text-decoration: none;
     color: var(--text-dim);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     display: flex;
     align-items: center;
     gap: 0.3rem;
@@ -1112,14 +1185,21 @@ section {
     max-width: 1000px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 4rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 769px) {
+    .contact-container {
+        grid-template-columns: 1fr 1.5fr;
+        gap: 4rem;
+    }
 }
 
 .contact-info {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .contact-item {
@@ -1150,6 +1230,7 @@ section {
     font-size: 0.9rem;
     font-weight: 300;
     font-family: 'Courier New', monospace;
+    word-break: break-word;
 }
 
 .contact-form {
@@ -1168,6 +1249,7 @@ section {
     font-family: 'Courier New', monospace;
     font-weight: 300;
     transition: all 0.3s;
+    font-size: 0.95rem;
 }
 
 .form-group input:focus,
@@ -1187,7 +1269,7 @@ section {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding: 0.8rem 2rem;
+    padding: 0.8rem 1.5rem;
     background: transparent;
     border: 1px solid var(--border-color);
     color: var(--text-primary);
@@ -1196,6 +1278,7 @@ section {
     font-weight: 300;
     letter-spacing: 2px;
     font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
 }
 
 .btn-primary:hover {
@@ -1205,7 +1288,7 @@ section {
 
 /* Footer */
 footer {
-    padding: 2rem;
+    padding: 1.5rem;
     text-align: center;
     border-top: 1px solid var(--border-color);
     background: var(--pure-black);
@@ -1213,154 +1296,237 @@ footer {
 
 .footer-content p {
     color: var(--text-dim);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 300;
     font-family: 'Courier New', monospace;
 }
 
-/* Responsive */
-@media (max-width: 968px) {
-    .hero-layout {
-        flex-direction: column;
-        text-align: center;
-        gap: 2rem;
-    }
-    
-    .hero-left {
-        justify-content: center;
-    }
-    
-    .hero-right {
-        text-align: center;
-    }
-    
-    .profession {
-        justify-content: center;
-    }
-    
-    .hexagon-container {
-        width: 320px;
-        height: 320px;
-    }
-    
-    .name-first {
-        font-size: 4.5rem;
-    }
-    
-    .name-middle {
-        font-size: 4rem;
-    }
-    
-    .name-last {
-        font-size: 3.8rem;
-    }
-    
-    .about-content,
-    .contact-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    .stats-container {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
+/* Mobile Navigation Improvements */
 @media (max-width: 768px) {
-    .nav-links {
-        gap: 1.5rem;
+    .navbar {
+        padding: 0.8rem 1rem;
     }
     
-    .hexagon-container {
-        width: 280px;
-        height: 280px;
-    }
-    
-    .name-first {
-        font-size: 3.5rem;
-        letter-spacing: 3px;
-    }
-    
-    .name-middle {
-        font-size: 3.2rem;
-        letter-spacing: 3px;
-    }
-    
-    .name-last {
-        font-size: 3rem;
-        letter-spacing: 4px;
-    }
-    
-    .profession {
-        font-size: 1.2rem;
-        gap: 1rem;
-    }
-    
-    .project-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .edu-card {
+    .nav-content {
         flex-direction: column;
         gap: 0.5rem;
     }
     
-    .edu-level {
-        min-width: auto;
+    .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
     }
     
-    .social-links-grid {
+    .nav-links a {
+        font-size: 0.85rem;
+        padding: 0.3rem 0;
+    }
+    
+    .hero-layout {
+        gap: 1.5rem;
+    }
+    
+    .profession {
+        margin-top: 0.5rem;
+    }
+    
+    .section-title {
+        margin-bottom: 2rem;
+    }
+    
+    .skill-tags {
+        justify-content: center;
+    }
+    
+    .hobby-card {
+        min-width: 100px;
+        padding: 0.5rem 1rem;
+    }
+    
+    .hobby-card i {
+        font-size: 1rem;
+    }
+    
+    .hobby-card span {
+        font-size: 0.85rem;
+    }
+    
+    .cert-card {
+        padding: 0.8rem;
+    }
+    
+    .cert-icon i {
+        font-size: 1.4rem;
+    }
+    
+    .cert-content h3 {
+        font-size: 0.95rem;
+    }
+    
+    .cert-issuer {
+        font-size: 0.8rem;
+    }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0.6rem 0.8rem;
+    }
+    
+    .logo {
+        font-size: 1rem;
+    }
+    
+    .nav-links {
+        gap: 0.8rem;
+    }
+    
+    .nav-links a {
+        font-size: 0.8rem;
+    }
+    
+    .hero {
+        padding-top: 5rem;
+    }
+    
+    .profession {
         flex-direction: column;
-        align-items: center;
+        gap: 0.3rem;
+    }
+    
+    .separator {
+        display: none;
     }
     
     .social-link-item {
         width: 100%;
         justify-content: center;
+        font-size: 0.85rem;
     }
     
-    .skills-progress-grid {
-        grid-template-columns: 1fr;
+    .stat-card {
+        padding: 0.8rem;
     }
     
-    .hobbies-grid {
-        gap: 1rem;
+    .stat-number {
+        font-size: 1.3rem;
     }
     
-    .hobby-card {
-        min-width: 120px;
-        padding: 0.7rem 1.2rem;
+    .stat-label {
+        font-size: 0.7rem;
     }
     
-    .hobby-card i {
-        font-size: 1.2rem;
+    .project-filters {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
     }
     
-    .certifications-grid {
-        grid-template-columns: 1fr;
+    .filter-btn {
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem;
+    }
+    
+    .project-tech {
+        gap: 0.4rem;
+    }
+    
+    .project-tech span {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.5rem;
+    }
+    
+    .project-links {
+        justify-content: center;
+    }
+    
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.3rem;
+    }
+    
+    .contact-item i {
+        margin-bottom: 0.2rem;
     }
 }
 
-@media (max-width: 480px) {
-    .nav-links {
-        gap: 1rem;
-        font-size: 0.8rem;
+/* Tablet Devices */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .hero-layout {
+        gap: 2rem;
     }
     
     .hexagon-container {
-        width: 220px;
-        height: 220px;
+        width: 300px;
+        height: 300px;
     }
     
     .name-first {
-        font-size: 2.5rem;
+        font-size: 4rem;
     }
     
     .name-middle {
-        font-size: 2.2rem;
+        font-size: 3.5rem;
     }
     
     .name-last {
-        font-size: 2rem;
+        font-size: 3.2rem;
+    }
+    
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Landscape Mode */
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 6rem 1rem 2rem;
+    }
+    
+    .hero-layout {
+        gap: 1.5rem;
+    }
+    
+    .hexagon-container {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .name-first {
+        font-size: 3rem;
+    }
+    
+    .name-middle {
+        font-size: 2.5rem;
+    }
+    
+    .name-last {
+        font-size: 2.2rem;
+    }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+    .skill-tag:hover,
+    .project-card:hover,
+    .hobby-card:hover,
+    .cert-card:hover,
+    .social-link-item:hover,
+    .btn-primary:hover {
+        transform: none;
+    }
+    
+    .nav-links a {
+        padding: 0.5rem 0;
+    }
+    
+    .filter-btn {
+        padding: 0.5rem 1rem;
     }
 }
