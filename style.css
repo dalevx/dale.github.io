@@ -66,6 +66,18 @@ body {
     }
 }
 
+/* CARD APPEAR ANIMATION - PARA SA STAGGER EFFECT */
+@keyframes cardAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
 /* Navigation */
 .navbar {
     position: fixed;
@@ -543,11 +555,14 @@ section {
     border-radius: 8px;
     overflow: hidden;
     transition: all 0.3s;
+    opacity: 0; /* Hidden by default - lalabas via JS */
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s;
 }
 
 .project-card:hover {
     border-color: var(--text-dim);
-    transform: translateY(-5px);
+    transform: translateY(-5px) scale(1.02);
     box-shadow: 0 10px 30px rgba(255,255,255,0.05);
 }
 
