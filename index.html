@@ -89,16 +89,16 @@
             
             <div class="stats-container">
                 <div class="stat-card">
-                    <div class="stat-number">10+</div>
+                    <div class="stat-number">5+</div>
                     <div class="stat-label">Projects Completed</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">5+</div>
-                    <div class="stat-label">Technologies</div>
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Major Projects</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">3+</div>
-                    <div class="stat-label">Years Learning</div>
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Simple Projects</div>
                 </div>
             </div>
         </div>
@@ -110,235 +110,154 @@
         
         <!-- Filter Buttons -->
         <div class="project-filters">
-            <button class="filter-btn active" data-filter="all">All (9)</button>
-            <button class="filter-btn" data-filter="embedded">Embedded Systems (3)</button>
-            <button class="filter-btn" data-filter="software">Software (3)</button>
-            <button class="filter-btn" data-filter="iot">IoT (3)</button>
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="major">Major Projects</button>
+            <button class="filter-btn" data-filter="simple">Simple Projects</button>
         </div>
 
         <div class="project-grid">
-            <!-- Project Card 1 - Embedded -->
-            <div class="project-card" data-category="embedded">
-                <div class="project-header">
-                    <div class="project-title">
-                        <i class="fas fa-microchip"></i>
-                        <h3>Smart Home Automation</h3>
+            <!-- MAJOR PROJECT 1 - MazeBot -->
+            <div class="project-card" data-category="major">
+                <div class="project-img-container">
+                    <img src="mazebot.jpg" alt="MazeBot" class="project-img">
+                    <div class="project-img-overlay"></div>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <div class="project-title">
+                            <i class="fas fa-robot"></i>
+                            <h3>MazeBot</h3>
+                        </div>
                     </div>
-                    <span class="project-year">2024</span>
-                </div>
-                <p class="project-description">
-                    Arduino-based home automation system with voice control and mobile app integration. 
-                    Features temperature monitoring, light control, and security alerts.
-                </p>
-                <div class="project-tech">
-                    <span>Arduino</span>
-                    <span>C++</span>
-                    <span>Bluetooth</span>
-                    <span>Android</span>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
-                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    <p class="project-description">
+                        An activity wherein we made a robotic car that goes into the maze and finds the exits without getting controlled by a person. Autonomous maze-solving robot using IR sensors for navigation.
+                    </p>
+                    <div class="project-tech">
+                        <span>Arduino Uno</span>
+                        <span>IR Sensor</span>
+                        <span>Powerbank</span>
+                        <span>C++</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                        <a href="#" class="project-link"><i class="fas fa-video"></i> Demo</a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Project Card 2 - Embedded -->
-            <div class="project-card" data-category="embedded">
-                <div class="project-header">
-                    <div class="project-title">
-                        <i class="fas fa-robot"></i>
-                        <h3>Line Follower Robot</h3>
+            <!-- MAJOR PROJECT 2 - TugonLipa (Hackathon) -->
+            <div class="project-card" data-category="major">
+                <div class="project-img-container">
+                    <img src="tugonlipa.jpg" alt="TugonLipa" class="project-img">
+                    <div class="project-img-overlay"></div>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <div class="project-title">
+                            <i class="fas fa-city"></i>
+                            <h3>TugonLipa <span class="project-badge">Hackathon</span></h3>
+                        </div>
                     </div>
-                    <span class="project-year">2023</span>
-                </div>
-                <p class="project-description">
-                    PID-controlled line follower robot using Arduino and IR sensors. 
-                    Achieved smooth navigation at speeds up to 1.5 m/s.
-                </p>
-                <div class="project-tech">
-                    <span>Arduino</span>
-                    <span>PID Control</span>
-                    <span>Sensors</span>
-                    <span>Motor Drivers</span>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
-                    <a href="#" class="project-link"><i class="fas fa-video"></i> Demo</a>
+                    <p class="project-description">
+                        A webapp that is for Lipa City residents only. It is a contact for Government facilities and Utilities for residents so that they can send messages to them directly and provide reports.
+                    </p>
+                    <div class="project-tech">
+                        <span>Web App</span>
+                        <span>Government</span>
+                        <span>Reporting</span>
+                        <span>Messaging</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link"><i class="fas fa-globe"></i> Website</a>
+                        <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Project Card 3 - Embedded -->
-            <div class="project-card" data-category="embedded">
-                <div class="project-header">
-                    <div class="project-title">
-                        <i class="fas fa-car"></i>
-                        <h3>Obstacle Avoidance Car</h3>
+            <!-- MAJOR PROJECT 3 - AssiScan (Thesis/Capstone) -->
+            <div class="project-card" data-category="major">
+                <div class="project-img-container">
+                    <img src="assiscan.jpg" alt="AssiScan" class="project-img">
+                    <div class="project-img-overlay"></div>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <div class="project-title">
+                            <i class="fas fa-file-alt"></i>
+                            <h3>AssiScan <span class="project-badge">Thesis</span></h3>
+                        </div>
                     </div>
-                    <span class="project-year">2023</span>
-                </div>
-                <p class="project-description">
-                    Autonomous RC car with ultrasonic sensors and servo-controlled steering. 
-                    Implements real-time obstacle detection and path planning.
-                </p>
-                <div class="project-tech">
-                    <span>Arduino</span>
-                    <span>Ultrasonic</span>
-                    <span>Servo</span>
-                    <span>C++</span>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
-                    <a href="#" class="project-link"><i class="fas fa-video"></i> Demo</a>
+                    <p class="project-description">
+                        A data-extraction system wherein it gets important details for the Enrollees and Transferees. The system lessens the errors and efforts for both the admin and the student. It also stores the digital copies of documents by the student.
+                    </p>
+                    <div class="project-tech">
+                        <span>Data Extraction</span>
+                        <span>Document Storage</span>
+                        <span>OCR</span>
+                        <span>Database</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                        <a href="#" class="project-link"><i class="fas fa-file-pdf"></i> Paper</a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Project Card 4 - Software -->
-            <div class="project-card" data-category="software">
-                <div class="project-header">
-                    <div class="project-title">
-                        <i class="fas fa-brain"></i>
-                        <h3>Path Planning Algorithm</h3>
+            <!-- SIMPLE PROJECT 1 - Calculator (Arduino) -->
+            <div class="project-card" data-category="simple">
+                <div class="project-img-container">
+                    <img src="calculator.jpg" alt="Arduino Calculator" class="project-img">
+                    <div class="project-img-overlay"></div>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <div class="project-title">
+                            <i class="fas fa-calculator"></i>
+                            <h3>Arduino Calculator</h3>
+                        </div>
                     </div>
-                    <span class="project-year">2023</span>
-                </div>
-                <p class="project-description">
-                    Implemented A* and Dijkstra algorithms for robot navigation in dynamic environments. 
-                    Achieved 30% faster path computation compared to traditional methods.
-                </p>
-                <div class="project-tech">
-                    <span>Python</span>
-                    <span>NumPy</span>
-                    <span>Matplotlib</span>
-                    <span>ROS</span>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
-                    <a href="#" class="project-link"><i class="fas fa-file-pdf"></i> Paper</a>
+                    <p class="project-description">
+                        Simple calculator using Arduino Uno with keypad and LCD display. Performs basic arithmetic operations including addition, subtraction, multiplication, and division.
+                    </p>
+                    <div class="project-tech">
+                        <span>Arduino Uno</span>
+                        <span>Keypad</span>
+                        <span>LCD</span>
+                        <span>C++</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                        <a href="#" class="project-link"><i class="fas fa-video"></i> Demo</a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Project Card 5 - Software -->
-            <div class="project-card" data-category="software">
-                <div class="project-header">
-                    <div class="project-title">
-                        <i class="fas fa-chart-line"></i>
-                        <h3>Network Traffic Analyzer</h3>
+            <!-- SIMPLE PROJECT 2 - Temperature and Humidity (Arduino) -->
+            <div class="project-card" data-category="simple">
+                <div class="project-img-container">
+                    <img src="th.jpg" alt="Temperature and Humidity Sensor" class="project-img">
+                    <div class="project-img-overlay"></div>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <div class="project-title">
+                            <i class="fas fa-temperature-high"></i>
+                            <h3>Temp & Humidity Monitor</h3>
+                        </div>
                     </div>
-                    <span class="project-year">2024</span>
-                </div>
-                <p class="project-description">
-                    Python-based network monitoring tool with real-time visualization and anomaly detection. 
-                    Captures and analyzes packets to identify potential security threats.
-                </p>
-                <div class="project-tech">
-                    <span>Python</span>
-                    <span>Scapy</span>
-                    <span>Wireshark</span>
-                    <span>Django</span>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
-                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live</a>
-                </div>
-            </div>
-
-            <!-- Project Card 6 - Software -->
-            <div class="project-card" data-category="software">
-                <div class="project-header">
-                    <div class="project-title">
-                        <i class="fas fa-calculator"></i>
-                        <h3>Matrix Calculator App</h3>
+                    <p class="project-description">
+                        Arduino-based temperature and humidity monitoring system using DHT11 sensor. Displays real-time readings on LCD and can send alerts when thresholds are exceeded.
+                    </p>
+                    <div class="project-tech">
+                        <span>Arduino Uno</span>
+                        <span>DHT11</span>
+                        <span>LCD</span>
+                        <span>C++</span>
                     </div>
-                    <span class="project-year">2023</span>
-                </div>
-                <p class="project-description">
-                    Java-based matrix calculator with GUI supporting various operations: addition, multiplication, 
-                    determinant, inverse, and eigen values calculation.
-                </p>
-                <div class="project-tech">
-                    <span>Java</span>
-                    <span>Swing</span>
-                    <span>Linear Algebra</span>
-                    <span>OOP</span>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
-                    <a href="#" class="project-link"><i class="fas fa-download"></i> Download</a>
-                </div>
-            </div>
-
-            <!-- Project Card 7 - IoT -->
-            <div class="project-card" data-category="iot">
-                <div class="project-header">
-                    <div class="project-title">
-                        <i class="fas fa-leaf"></i>
-                        <h3>Smart Agriculture System</h3>
+                    <div class="project-links">
+                        <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                        <a href="#" class="project-link"><i class="fas fa-chart-line"></i> Data</a>
                     </div>
-                    <span class="project-year">2024</span>
-                </div>
-                <p class="project-description">
-                    IoT-based soil monitoring system using ESP32 and various sensors. 
-                    Real-time data collection and analysis for optimal crop growth.
-                </p>
-                <div class="project-tech">
-                    <span>ESP32</span>
-                    <span>MQTT</span>
-                    <span>Node-RED</span>
-                    <span>MySQL</span>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
-                    <a href="#" class="project-link"><i class="fas fa-video"></i> Demo</a>
-                </div>
-            </div>
-
-            <!-- Project Card 8 - IoT -->
-            <div class="project-card" data-category="iot">
-                <div class="project-header">
-                    <div class="project-title">
-                        <i class="fas fa-heartbeat"></i>
-                        <h3>Health Monitoring System</h3>
-                    </div>
-                    <span class="project-year">2023</span>
-                </div>
-                <p class="project-description">
-                    Wearable device for real-time health monitoring using ESP32 and biometric sensors. 
-                    Sends alerts to doctors in case of emergency.
-                </p>
-                <div class="project-tech">
-                    <span>ESP32</span>
-                    <span>Blynk</span>
-                    <span>IoT</span>
-                    <span>Sensors</span>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
-                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
-                </div>
-            </div>
-
-            <!-- Project Card 9 - IoT -->
-            <div class="project-card" data-category="iot">
-                <div class="project-header">
-                    <div class="project-title">
-                        <i class="fas fa-parking"></i>
-                        <h3>Smart Parking System</h3>
-                    </div>
-                    <span class="project-year">2024</span>
-                </div>
-                <p class="project-description">
-                    IoT-based parking monitoring system with ultrasonic sensors and mobile app. 
-                    Shows real-time slot availability and reservation system.
-                </p>
-                <div class="project-tech">
-                    <span>ESP8266</span>
-                    <span>Firebase</span>
-                    <span>Android</span>
-                    <span>Sensors</span>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
-                    <a href="#" class="project-link"><i class="fas fa-mobile-alt"></i> App</a>
                 </div>
             </div>
         </div>
