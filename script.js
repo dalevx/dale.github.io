@@ -42,11 +42,13 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// 3D TEXT THAT FOLLOWS CURSOR
+// 3D TEXT THAT FOLLOWS CURSOR - IMPROVED
 const hero = document.querySelector('.hero');
 const name3D = document.querySelector('.name-3d');
 
 if (name3D) {
+    let timeout;
+    
     hero.addEventListener('mousemove', (e) => {
         // Get mouse position relative to hero section
         const rect = hero.getBoundingClientRect();
@@ -54,20 +56,25 @@ if (name3D) {
         const mouseY = e.clientY - rect.top;
         
         // Calculate rotation based on mouse position
-        // Map mouse position to rotation values (-15deg to 15deg)
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
         
-        const rotateY = ((mouseX - centerX) / centerX) * 15; // Max 15 degrees
-        const rotateX = ((mouseY - centerY) / centerY) * -15; // Max 15 degrees, inverted
+        // Mas malaking rotation (20 degrees max) para mas obvious
+        const rotateY = ((mouseX - centerX) / centerX) * 20;
+        const rotateX = ((mouseY - centerY) / centerY) * -20;
         
-        // Apply 3D rotation
-        name3D.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+        // Apply 3D rotation with smoother transition
+        name3D.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(30px)`;
+        
+        // Clear any existing timeout
+        clearTimeout(timeout);
     });
     
-    // Reset when mouse leaves
+    // Reset when mouse leaves - may delay para smooth
     hero.addEventListener('mouseleave', () => {
-        name3D.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(20px)';
+        timeout = setTimeout(() => {
+            name3D.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(30px)';
+        }, 100);
     });
 }
 
