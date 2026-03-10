@@ -104,7 +104,7 @@ body {
     background: linear-gradient(90deg, transparent, var(--text-dim), transparent);
 }
 
-/* Hero Section */
+/* Hero Section - Left Picture, Right Name */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -123,19 +123,21 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 5rem;
+    flex-wrap: wrap;
 }
 
-.hero-center {
-    text-align: center;
-    position: relative;
+/* LEFT SIDE - Image */
+.hero-left {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
 }
 
-/* Image Container with Blending */
 .image-container {
     position: relative;
     width: 380px;
     height: 380px;
-    margin: 0 auto 2rem;
 }
 
 .image-wrapper {
@@ -143,6 +145,7 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    border-radius: 50%;
 }
 
 .profile-image {
@@ -162,15 +165,21 @@ body {
     height: 100%;
     background: radial-gradient(circle at center, transparent 60%, var(--pure-black) 100%);
     pointer-events: none;
+    border-radius: 50%;
 }
 
-/* Name below image - Monochrome */
+/* RIGHT SIDE - Name and Profession */
+.hero-right {
+    flex: 1;
+    text-align: left;
+}
+
 .name-container {
     margin-bottom: 1rem;
 }
 
 .name-first {
-    font-size: 4rem;
+    font-size: 4.5rem;
     font-weight: 700;
     line-height: 1.1;
     color: var(--text-primary);
@@ -181,7 +190,7 @@ body {
 }
 
 .name-last {
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-weight: 500;
     line-height: 1.1;
     color: var(--text-secondary);
@@ -198,9 +207,9 @@ body {
     letter-spacing: 3px;
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 1.5rem;
     font-family: 'Courier New', monospace;
+    margin-top: 1.5rem;
 }
 
 .separator {
@@ -542,17 +551,35 @@ footer {
 
 /* Responsive */
 @media (max-width: 968px) {
+    .hero-layout {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .hero-left {
+        justify-content: center;
+    }
+    
+    .hero-right {
+        text-align: center;
+    }
+    
+    .profession {
+        justify-content: center;
+    }
+    
     .image-container {
         width: 320px;
         height: 320px;
     }
     
     .name-first {
-        font-size: 3.2rem;
+        font-size: 3.5rem;
     }
     
     .name-last {
-        font-size: 2.8rem;
+        font-size: 3rem;
     }
     
     .about-content,
@@ -577,17 +604,17 @@ footer {
     }
     
     .name-first {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
         letter-spacing: 4px;
     }
     
     .name-last {
-        font-size: 2.2rem;
+        font-size: 2.4rem;
         letter-spacing: 6px;
     }
     
     .profession {
-        font-size: 1rem;
+        font-size: 1.1rem;
         gap: 1rem;
     }
     
@@ -608,7 +635,7 @@ footer {
     }
     
     .name-first {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
     
     .name-last {
