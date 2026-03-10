@@ -23,7 +23,152 @@ filterButtons.forEach(button => {
     });
 });
 
-// PAGE TRANSITIONS - smooth scroll with fade effects
+// =============================================
+// ALL TOP RECOMMENDATIONS COMBINED
+// =============================================
+
+// 1. SMOOTH REVEAL ON SCROLL (Fade + Slide)
+// 2. PROGRESS BAR (Scroll indicator)
+// 3. SECTION HIGHLIGHT (Active navigation)
+// 4. STAGGERED SECTIONS (Sunod-sunod na elements)
+// 5. SMOOTH ANCHOR SCROLL (Easing sa links)
+
+// =============================================
+// INITIAL SETUP
+// =============================================
+document.addEventListener('DOMContentLoaded', () => {
+    // Create progress bar
+    createProgressBar();
+    
+    // Set initial states for reveal elements
+    setupRevealElements();
+    
+    // Run once to check visible elements
+    setTimeout(() => {
+        checkReveal();
+        updateActiveSection();
+    }, 200);
+});
+
+// =============================================
+// 1. SMOOTH REVEAL ON SCROLL (Fade + Slide)
+// =============================================
+function setupRevealElements() {
+    const revealElements = document.querySelectorAll(
+        '.about-content, .edu-card, .skill-progress-item, .hobby-card, .cert-card, .project-card, .social-link-item, .stat-card'
+    );
+    
+    revealElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+    });
+}
+
+function checkReveal() {
+    const revealElements = document.querySelectorAll(
+        '.about-content, .edu-card, .skill-progress-item, .hobby-card, .cert-card, .project-card, .social-link-item, .stat-card'
+    );
+    
+    revealElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        // Element is visible (with 100px threshold)
+        if (rect.top < windowHeight - 100 && rect.bottom > 0) {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+        } else {
+            // Optional: Hide when out of view (para may effect pag balik)
+            // Comment out kung gusto permanenteng visible
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+        }
+    });
+}
+
+// =============================================
+// 2. PROGRESS BAR (Scroll indicator)
+// =============================================
+function createProgressBar() {
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress';
+    progressBar.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: linear-gradient(90deg, #888, #fff, #888);
+        z-index: 1001;
+        transition: width 0.1s ease;
+        box-shadow: 0 0 10px rgba(255,255,255,0.3);
+    `;
+    document.body.appendChild(progressBar);
+    
+    window.addEventListener('scroll', () => {
+        const winScroll = document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = (winScroll / height) * 100;
+        progressBar.style.width = scrolled + '%';
+    });
+}
+
+// =============================================
+// 3. SECTION HIGHLIGHT (Active navigation)
+// =============================================
+function updateActiveSection() {
+    const sections = document.querySelectorAll('.hero, .about, .education-section, .skills-progress-section, .hobbies-section, .certifications-section, .projects, .contact');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        const id = section.getAttribute('id');
+        
+        // Check if section is in view
+        if (rect.top <= 150 && rect.bottom >= 150) {
+            // Remove active class from all links
+            navLinks.forEach(link => {
+                link.style.color = '';
+                link.style.textShadow = '';
+            });
+            
+            // Add active class to corresponding link
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === `#${id}`) {
+                    link.style.color = 'var(--text-primary)';
+                    link.style.textShadow = '0 0 10px rgba(255,255,255,0.3)';
+                }
+            });
+        }
+    });
+}
+
+// =============================================
+// 4. STAGGERED SECTIONS (Sunod-sunod na elements)
+// =============================================
+function staggerReveal() {
+    const sections = document.querySelectorAll('.about, .education-section, .skills-progress-section, .hobbies-section, .certifications-section, .projects');
+    
+    sections.forEach((section, sectionIndex) => {
+        const rect = section.getBoundingClientRect();
+        
+        if (rect.top < window.innerHeight - 100 && rect.bottom > 0) {
+            const children = section.querySelectorAll('.edu-card, .skill-progress-item, .hobby-card, .cert-card, .project-card, .social-link-item, .stat-card');
+            
+            children.forEach((child, index) => {
+                setTimeout(() => {
+                    child.style.opacity = '1';
+                    child.style.transform = 'translateY(0)';
+                }, index * 100); // 100ms delay per child
+            });
+        }
+    });
+}
+
+// =============================================
+// 5. SMOOTH ANCHOR SCROLL (Easing sa links)
+// =============================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -32,51 +177,46 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const targetElement = document.querySelector(targetId);
         
         if (targetElement) {
-            // Get all sections
-            const sections = document.querySelectorAll('.hero, .about, .projects, .contact');
-            
-            // Fade out all sections
-            sections.forEach(section => {
-                section.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-                section.style.opacity = '0';
-                section.style.transform = 'translateY(20px)';
-            });
-            
-            // Scroll to target with offset para sa navbar
             const navbarHeight = document.querySelector('.navbar').offsetHeight;
             const targetPosition = targetElement.offsetTop - navbarHeight;
             
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
+            // Smooth scroll with custom easing
+            smoothScrollTo(targetPosition, 800);
             
-            // Fade in ang target section after scroll
-            setTimeout(() => {
-                sections.forEach(section => {
-                    section.style.opacity = '1';
-                    section.style.transform = 'translateY(0)';
-                });
-                
-                // Add highlight effect sa target section
-                targetElement.style.transition = 'box-shadow 0.3s ease';
-                targetElement.style.boxShadow = 'inset 0 0 30px rgba(255,255,255,0.1)';
-                
-                setTimeout(() => {
-                    targetElement.style.boxShadow = 'none';
-                }, 500);
-            }, 400);
-            
-            // Update active state sa navigation
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.style.color = 'var(--text-dim)';
-            });
-            this.style.color = 'var(--text-primary)';
+            // Update URL without jumping
+            history.pushState(null, null, targetId);
         }
     });
 });
 
-// Navbar transparency on scroll
+// Custom smooth scroll easing function
+function smoothScrollTo(targetY, duration) {
+    const startY = window.scrollY;
+    const distance = targetY - startY;
+    const startTime = performance.now();
+    
+    function easeInOutCubic(t) {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
+    
+    function scroll(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = easeInOutCubic(progress);
+        
+        window.scrollTo(0, startY + distance * ease);
+        
+        if (progress < 1) {
+            requestAnimationFrame(scroll);
+        }
+    }
+    
+    requestAnimationFrame(scroll);
+}
+
+// =============================================
+// NAVBAR TRANSPARENCY ON SCROLL
+// =============================================
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 100) {
@@ -84,9 +224,16 @@ window.addEventListener('scroll', () => {
     } else {
         navbar.classList.remove('scrolled');
     }
+    
+    // Call all scroll-based functions
+    checkReveal();
+    updateActiveSection();
+    staggerReveal();
 });
 
-// 3D CURSOR EFFECT - 3 LINES (original)
+// =============================================
+// 3D CURSOR EFFECT - 3 LINES
+// =============================================
 const hero = document.querySelector('.hero');
 const nameFirst = document.querySelector('.name-first');
 const nameMiddle = document.querySelector('.name-middle');
@@ -129,39 +276,51 @@ if (nameFirst && nameMiddle && nameLast) {
     });
 }
 
-// ===== RANDOM DRIFTING PARA SA PANGALAN (IDEA B) =====
+// =============================================
+// RANDOM DRIFTING PARA SA PANGALAN
+// =============================================
 function randomDrift() {
+    if (!nameFirst || !nameMiddle || !nameLast) return;
+    
     // DALE - konting galaw lang
-    const driftX1 = (Math.random() - 0.5) * 8; // -4px to 4px
-    const driftY1 = (Math.random() - 0.5) * 6; // -3px to 3px
-    const rotate1 = (Math.random() - 0.5) * 1.5; // -0.75deg to 0.75deg
+    const driftX1 = (Math.random() - 0.5) * 8;
+    const driftY1 = (Math.random() - 0.5) * 6;
+    const rotate1 = (Math.random() - 0.5) * 1.5;
     
     // VINCENT - katamtamang galaw
-    const driftX2 = (Math.random() - 0.5) * 12; // -6px to 6px
-    const driftY2 = (Math.random() - 0.5) * 8; // -4px to 4px
-    const rotate2 = (Math.random() - 0.5) * 2; // -1deg to 1deg
+    const driftX2 = (Math.random() - 0.5) * 12;
+    const driftY2 = (Math.random() - 0.5) * 8;
+    const rotate2 = (Math.random() - 0.5) * 2;
     
     // DIMAANO - pinakamalayang galaw
-    const driftX3 = (Math.random() - 0.5) * 15; // -7.5px to 7.5px
-    const driftY3 = (Math.random() - 0.5) * 10; // -5px to 5px
-    const rotate3 = (Math.random() - 0.5) * 2.5; // -1.25deg to 1.25deg
+    const driftX3 = (Math.random() - 0.5) * 15;
+    const driftY3 = (Math.random() - 0.5) * 10;
+    const rotate3 = (Math.random() - 0.5) * 2.5;
     
-    // Apply sa pangalan
-    nameFirst.style.transform += ` translate(${driftX1}px, ${driftY1}px) rotate(${rotate1}deg)`;
-    nameMiddle.style.transform += ` translate(${driftX2}px, ${driftY2}px) rotate(${rotate2}deg)`;
-    nameLast.style.transform += ` translate(${driftX3}px, ${driftY3}px) rotate(${rotate3}deg)`;
+    // Get current transform from 3D effect
+    const currentTransformFirst = nameFirst.style.transform.replace(/translate\([^)]*\)/g, '').trim();
+    const currentTransformMiddle = nameMiddle.style.transform.replace(/translate\([^)]*\)/g, '').trim();
+    const currentTransformLast = nameLast.style.transform.replace(/translate\([^)]*\)/g, '').trim();
+    
+    // Apply combined transform
+    nameFirst.style.transform = `${currentTransformFirst} translate(${driftX1}px, ${driftY1}px) rotate(${rotate1}deg)`;
+    nameMiddle.style.transform = `${currentTransformMiddle} translate(${driftX2}px, ${driftY2}px) rotate(${rotate2}deg)`;
+    nameLast.style.transform = `${currentTransformLast} translate(${driftX3}px, ${driftY3}px) rotate(${rotate3}deg)`;
 }
 
-// ===== GLITCH EFFECT PARA SA "Computer Engineer" (IDEA D) =====
+// =============================================
+// GLITCH EFFECT PARA SA "Computer Engineer"
+// =============================================
 const professionText = document.querySelector('.profession');
 const originalText = 'Computer Engineer';
 const glitchChars = '!<>-_\\/[]{}—=+*^?#________';
 
 function glitchEffect() {
+    if (!professionText) return;
+    
     let glitchCount = 0;
     const glitchInterval = setInterval(() => {
-        if (glitchCount < 6) { // Magli-glitch ng 6 na beses
-            // Pumili ng random na letra na papalitan
+        if (glitchCount < 6) {
             const textArray = originalText.split('');
             const glitchPos = Math.floor(Math.random() * textArray.length);
             const randomChar = glitchChars[Math.floor(Math.random() * glitchChars.length)];
@@ -171,31 +330,30 @@ function glitchEffect() {
             
             glitchCount++;
         } else {
-            // Balik sa original
             professionText.innerHTML = `<span class="separator">[</span> ${originalText} <span class="separator">]</span>`;
             clearInterval(glitchInterval);
         }
-    }, 80); // 80ms per glitch
+    }, 80);
 }
 
-// ===== GLOW FOLLOW (Cursor Effect) =====
-// Create glow element
+// =============================================
+// GLOW FOLLOW (Cursor Effect)
+// =============================================
 const glow = document.createElement('div');
 glow.className = 'glow-cursor';
 document.body.appendChild(glow);
-
-// Hide glow by default
 glow.style.opacity = '0';
 
-// Show glow when mouse moves
 document.addEventListener('mousemove', (e) => {
     glow.style.opacity = '1';
     glow.style.left = e.clientX + 'px';
     glow.style.top = e.clientY + 'px';
     
-    // Pag nasa links or buttons, lumiliit ang glow
     const target = e.target;
-    if (target.tagName === 'A' || target.tagName === 'BUTTON' || target.classList.contains('filter-btn') || target.classList.contains('project-link')) {
+    if (target.tagName === 'A' || target.tagName === 'BUTTON' || 
+        target.classList.contains('filter-btn') || target.classList.contains('project-link') ||
+        target.classList.contains('skill-tag') || target.classList.contains('btn-primary') ||
+        target.classList.contains('social-link-item')) {
         glow.style.width = '150px';
         glow.style.height = '150px';
         glow.style.background = 'radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 70%)';
@@ -206,70 +364,19 @@ document.addEventListener('mousemove', (e) => {
     }
 });
 
-// Hide glow when mouse leaves window
 document.addEventListener('mouseleave', () => {
     glow.style.opacity = '0';
 });
 
+// =============================================
 // RUN ALL EFFECTS
-setInterval(() => {
-    randomDrift(); // Palaging tumatakbo ang drifting (every 2 seconds)
-}, 2000);
+// =============================================
+setInterval(randomDrift, 2000);
+setInterval(glitchEffect, 5000);
 
-setInterval(() => {
-    glitchEffect(); // Magka-glitch every 5 seconds
-}, 5000);
-
-// SCROLL REVEAL - CARD STAGGER
-window.addEventListener('load', () => {
-    // Initial setup - lahat ng cards nakatago
-    const cards = document.querySelectorAll('.project-card');
-    cards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    });
-    
-    // Function to check if element is in viewport
-    function isInViewport(el) {
-        const rect = el.getBoundingClientRect();
-        return (
-            rect.top <= window.innerHeight * 0.85 &&
-            rect.bottom >= 0
-        );
-    }
-    
-    // Function to reveal cards with stagger effect
-    function revealCards() {
-        const cards = document.querySelectorAll('.project-card');
-        let visibleCards = [];
-        
-        // Kunin ang mga visible na cards
-        cards.forEach(card => {
-            if (isInViewport(card)) {
-                visibleCards.push(card);
-            }
-        });
-        
-        // Ipakita ang cards sunod-sunod
-        visibleCards.forEach((card, index) => {
-            setTimeout(() => {
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-            }, index * 150);
-        });
-    }
-    
-    // Run on scroll
-    window.addEventListener('scroll', () => {
-        revealCards();
-    });
-    
-    // Run once on load
-    setTimeout(revealCards, 200);
-});
-
-// Contact form
+// =============================================
+// CONTACT FORM
+// =============================================
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
