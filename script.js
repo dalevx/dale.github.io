@@ -42,35 +42,55 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// 3D CURSOR EFFECT
+// 3D CURSOR EFFECT - MAS MAGANDA (bawat letra gumagalaw)
 const hero = document.querySelector('.hero');
-const nameFirst = document.querySelector('.name-first');
-const nameLast = document.querySelector('.name-last');
+const nameFirstLetters = document.querySelectorAll('.name-first span');
+const nameLastLetters = document.querySelectorAll('.name-last span');
 
-if (nameFirst && nameLast) {
+if (nameFirstLetters.length > 0 && nameLastLetters.length > 0) {
     let timeout;
     
     hero.addEventListener('mousemove', (e) => {
-        // Get mouse position relative to hero section
         const rect = hero.getBoundingClientRect();
         const mouseX = e.clientX - rect.left;
         const mouseY = e.clientY - rect.top;
         
-        // Calculate center
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
         
-        // Calculate rotation (max 8 degrees lang para subtle)
-        const rotateY = ((mouseX - centerX) / centerX) * 8;
-        const rotateX = ((mouseY - centerY) / centerY) * -8;
+        // Base rotation (mas subtle, 12 degrees max)
+        const baseRotateY = ((mouseX - centerX) / centerX) * 12;
+        const baseRotateX = ((mouseY - centerY) / centerY) * -12;
         
-        // Apply rotation to each name with different intensity
-        nameFirst.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
-        nameLast.style.transform = `perspective(1000px) rotateX(${rotateX * 1.2}deg) rotateY(${rotateY * 1.2}deg) translateZ(30px)`;
+        // Iba-ibang galaw per letter - para mas maganda
+        nameFirstLetters.forEach((letter, index) => {
+            // Iba-ibang delay para sunod-sunod ang galaw
+            const delay = index * 0.03;
+            // Iba-ibang intensity para hindi pare-pareho
+            const intensity = 0.8 + (index % 4) * 0.2;
+            // Iba-ibang Z depth
+            const zDepth = 15 + (index * 2);
+            
+            letter.style.transform = `perspective(1000px) 
+                rotateX(${baseRotateX * intensity}deg) 
+                rotateY(${baseRotateY * intensity}deg) 
+                translateZ(${zDepth}px)`;
+            letter.style.transition = 'transform 0.15s cubic-bezier(0.23, 1, 0.32, 1)';
+            letter.style.transitionDelay = `${delay}s`;
+        });
         
-        // Add transition for smoothness
-        nameFirst.style.transition = 'transform 0.1s ease-out';
-        nameLast.style.transition = 'transform 0.1s ease-out';
+        nameLastLetters.forEach((letter, index) => {
+            const delay = index * 0.03 + 0.2; // Mas late magalaw ang DIMAANO
+            const intensity = 1.0 + (index % 3) * 0.15;
+            const zDepth = 20 + (index * 3);
+            
+            letter.style.transform = `perspective(1000px) 
+                rotateX(${baseRotateX * intensity}deg) 
+                rotateY(${baseRotateY * intensity}deg) 
+                translateZ(${zDepth}px)`;
+            letter.style.transition = 'transform 0.15s cubic-bezier(0.23, 1, 0.32, 1)';
+            letter.style.transitionDelay = `${delay}s`;
+        });
         
         // Clear any existing timeout
         clearTimeout(timeout);
@@ -79,8 +99,17 @@ if (nameFirst && nameLast) {
     // Reset when mouse leaves (with delay para smooth)
     hero.addEventListener('mouseleave', () => {
         timeout = setTimeout(() => {
-            nameFirst.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
-            nameLast.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+            nameFirstLetters.forEach(letter => {
+                letter.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+                letter.style.transition = 'transform 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
+                letter.style.transitionDelay = '0s';
+            });
+            
+            nameLastLetters.forEach(letter => {
+                letter.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+                letter.style.transition = 'transform 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
+                letter.style.transitionDelay = '0s';
+            });
         }, 200);
     });
 }
