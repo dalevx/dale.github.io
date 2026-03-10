@@ -112,7 +112,7 @@ body {
     justify-content: center;
     position: relative;
     padding: 6rem 2rem 2rem 2rem;
-    perspective: 1000px;
+    perspective: 1200px;
 }
 
 .hero-content {
@@ -137,8 +137,8 @@ body {
 
 .hexagon-container {
     position: relative;
-    width: 380px;
-    height: 380px;
+    width: 400px;
+    height: 400px;
 }
 
 .hexagon {
@@ -178,7 +178,7 @@ body {
     opacity: 1;
 }
 
-/* RIGHT SIDE - 3D Name */
+/* RIGHT SIDE - 3D Name - PINALAKI AT PINAGANDA */
 .hero-right {
     flex: 1;
     text-align: left;
@@ -187,59 +187,67 @@ body {
 .name-3d-container {
     transform-style: preserve-3d;
     margin-bottom: 1rem;
+    perspective: 1200px;
 }
 
 .name-3d {
     transform-style: preserve-3d;
-    transition: transform 0.1s ease-out;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    display: inline-block;
+    filter: drop-shadow(0 0 20px rgba(255,255,255,0.15));
 }
 
 .name-first-3d {
-    font-size: 4.5rem;
-    font-weight: 700;
+    font-size: 6.5rem; /* PINALAKI (from 4.5rem to 6.5rem) */
+    font-weight: 800;
     line-height: 1.1;
     color: var(--text-primary);
-    letter-spacing: 6px;
-    margin-bottom: 0.2rem;
+    letter-spacing: 8px;
+    margin-bottom: 0.5rem;
     text-transform: uppercase;
     font-family: 'Segoe UI', 'Inter', sans-serif;
+    display: block;
+    transform: translateZ(50px); /* Mas malalim na 3D */
     text-shadow: 
-        2px 2px 0 var(--text-dim),
-        4px 4px 0 rgba(255,255,255,0.1);
-    transform: translateZ(20px);
+        3px 3px 0 var(--text-dim),
+        6px 6px 0 rgba(255,255,255,0.1),
+        9px 9px 0 rgba(255,255,255,0.05);
 }
 
 .name-last-3d {
-    font-size: 4rem;
-    font-weight: 500;
+    font-size: 5.5rem; /* PINALAKI (from 4rem to 5.5rem) */
+    font-weight: 600;
     line-height: 1.1;
     color: var(--text-secondary);
-    letter-spacing: 8px;
+    letter-spacing: 10px;
     text-transform: uppercase;
     font-family: 'Segoe UI', 'Inter', sans-serif;
+    display: block;
+    transform: translateZ(70px); /* Mas malalim pa */
     text-shadow: 
-        2px 2px 0 var(--text-dim),
-        4px 4px 0 rgba(255,255,255,0.1);
-    transform: translateZ(30px);
+        3px 3px 0 var(--text-dim),
+        6px 6px 0 rgba(255,255,255,0.1),
+        9px 9px 0 rgba(255,255,255,0.05);
 }
 
 /* Profession with engineering brackets */
 .profession {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: 300;
     color: var(--text-dim);
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     display: flex;
     align-items: center;
     gap: 1.5rem;
     font-family: 'Courier New', monospace;
-    margin-top: 1.5rem;
-    transform: translateZ(10px);
+    margin-top: 2rem;
+    transform: translateZ(30px);
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
 }
 
 .separator {
     color: var(--text-dim);
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 300;
 }
 
@@ -600,11 +608,11 @@ footer {
     }
     
     .name-first-3d {
-        font-size: 3.5rem;
+        font-size: 4.5rem;
     }
     
     .name-last-3d {
-        font-size: 3rem;
+        font-size: 4rem;
     }
     
     .about-content,
@@ -629,17 +637,17 @@ footer {
     }
     
     .name-first-3d {
-        font-size: 2.8rem;
+        font-size: 3.5rem;
         letter-spacing: 4px;
     }
     
     .name-last-3d {
-        font-size: 2.4rem;
+        font-size: 3rem;
         letter-spacing: 6px;
     }
     
     .profession {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         gap: 1rem;
     }
     
@@ -660,10 +668,10 @@ footer {
     }
     
     .name-first-3d {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
     }
     
     .name-last-3d {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
     }
 }
