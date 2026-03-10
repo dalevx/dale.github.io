@@ -104,7 +104,7 @@ body {
     background: linear-gradient(90deg, transparent, var(--text-dim), transparent);
 }
 
-/* Hero Section - Left Picture, Right Name */
+/* Hero Section - Hexagon + 3D Text */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -112,6 +112,7 @@ body {
     justify-content: center;
     position: relative;
     padding: 6rem 2rem 2rem 2rem;
+    perspective: 1000px;
 }
 
 .hero-content {
@@ -127,58 +128,73 @@ body {
     flex-wrap: wrap;
 }
 
-/* LEFT SIDE - Image */
+/* LEFT SIDE - Hexagon Image */
 .hero-left {
     flex: 1;
     display: flex;
     justify-content: flex-end;
 }
 
-.image-container {
+.hexagon-container {
     position: relative;
     width: 380px;
     height: 380px;
 }
 
-.image-wrapper {
+.hexagon {
     position: relative;
     width: 100%;
     height: 100%;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%);
     overflow: hidden;
-    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(255,255,255,0.1);
+    transition: transform 0.3s;
 }
 
-.profile-image {
+.hexagon-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
 }
 
-/* Image Blending - fade edges to black */
-.image-wrapper::after {
-    content: '';
+.hexagon-glow {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, transparent 60%, var(--pure-black) 100%);
+    background: radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s;
     pointer-events: none;
-    border-radius: 50%;
 }
 
-/* RIGHT SIDE - Name and Profession */
+.hexagon:hover {
+    transform: scale(1.02);
+}
+
+.hexagon:hover .hexagon-glow {
+    opacity: 1;
+}
+
+/* RIGHT SIDE - 3D Name */
 .hero-right {
     flex: 1;
     text-align: left;
 }
 
-.name-container {
+.name-3d-container {
+    transform-style: preserve-3d;
     margin-bottom: 1rem;
 }
 
-.name-first {
+.name-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out;
+}
+
+.name-first-3d {
     font-size: 4.5rem;
     font-weight: 700;
     line-height: 1.1;
@@ -187,9 +203,13 @@ body {
     margin-bottom: 0.2rem;
     text-transform: uppercase;
     font-family: 'Segoe UI', 'Inter', sans-serif;
+    text-shadow: 
+        2px 2px 0 var(--text-dim),
+        4px 4px 0 rgba(255,255,255,0.1);
+    transform: translateZ(20px);
 }
 
-.name-last {
+.name-last-3d {
     font-size: 4rem;
     font-weight: 500;
     line-height: 1.1;
@@ -197,6 +217,10 @@ body {
     letter-spacing: 8px;
     text-transform: uppercase;
     font-family: 'Segoe UI', 'Inter', sans-serif;
+    text-shadow: 
+        2px 2px 0 var(--text-dim),
+        4px 4px 0 rgba(255,255,255,0.1);
+    transform: translateZ(30px);
 }
 
 /* Profession with engineering brackets */
@@ -210,6 +234,7 @@ body {
     gap: 1.5rem;
     font-family: 'Courier New', monospace;
     margin-top: 1.5rem;
+    transform: translateZ(10px);
 }
 
 .separator {
@@ -569,16 +594,16 @@ footer {
         justify-content: center;
     }
     
-    .image-container {
+    .hexagon-container {
         width: 320px;
         height: 320px;
     }
     
-    .name-first {
+    .name-first-3d {
         font-size: 3.5rem;
     }
     
-    .name-last {
+    .name-last-3d {
         font-size: 3rem;
     }
     
@@ -598,17 +623,17 @@ footer {
         gap: 1.5rem;
     }
     
-    .image-container {
+    .hexagon-container {
         width: 280px;
         height: 280px;
     }
     
-    .name-first {
+    .name-first-3d {
         font-size: 2.8rem;
         letter-spacing: 4px;
     }
     
-    .name-last {
+    .name-last-3d {
         font-size: 2.4rem;
         letter-spacing: 6px;
     }
@@ -629,16 +654,16 @@ footer {
         font-size: 0.8rem;
     }
     
-    .image-container {
+    .hexagon-container {
         width: 220px;
         height: 220px;
     }
     
-    .name-first {
+    .name-first-3d {
         font-size: 2.2rem;
     }
     
-    .name-last {
+    .name-last-3d {
         font-size: 1.8rem;
     }
 }
