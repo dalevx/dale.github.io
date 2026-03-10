@@ -39,6 +39,52 @@ body {
     z-index: -1;
 }
 
+/* ===== GEOMETRIC GRID BACKGROUND ===== */
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: 
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    transform: rotate(15deg);
+    animation: gridMove 25s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes gridMove {
+    0% {
+        transform: rotate(15deg) translate(0, 0);
+    }
+    100% {
+        transform: rotate(15deg) translate(60px, 60px);
+    }
+}
+
+/* ===== GLOW FOLLOW (Cursor Effect) ===== */
+.glow-cursor {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    filter: blur(30px);
+    transition: width 0.2s, height 0.2s;
+}
+
 /* TRANSITION EFFECTS FOR SECTIONS */
 .hero, .about, .projects, .contact {
     transition: opacity 0.5s ease, transform 0.5s ease;
@@ -66,7 +112,7 @@ body {
     }
 }
 
-/* CARD APPEAR ANIMATION - PARA SA STAGGER EFFECT */
+/* CARD APPEAR ANIMATION */
 @keyframes cardAppear {
     0% {
         opacity: 0;
@@ -159,7 +205,7 @@ body {
     background: linear-gradient(90deg, transparent, var(--text-dim), transparent);
 }
 
-/* Hero Section - Hexagon + 3 LINES NAME */
+/* Hero Section */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -173,6 +219,8 @@ body {
 .hero-content {
     max-width: 1200px;
     width: 100%;
+    position: relative;
+    z-index: 2;
 }
 
 .hero-layout {
@@ -183,11 +231,13 @@ body {
     flex-wrap: wrap;
 }
 
-/* LEFT SIDE - Hexagon Image */
+/* LEFT SIDE - Hexagon Image with GLOW AND BORDER */
 .hero-left {
     flex: 1;
     display: flex;
     justify-content: flex-end;
+    position: relative;
+    z-index: 2;
 }
 
 .hexagon-container {
@@ -196,14 +246,73 @@ body {
     height: 400px;
 }
 
+/* ===== HEXAGON GLOW AND BORDER ===== */
 .hexagon {
     position: relative;
     width: 100%;
     height: 100%;
     clip-path: polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%);
     overflow: hidden;
-    box-shadow: 0 0 30px rgba(255,255,255,0.1);
     transition: transform 0.3s, box-shadow 0.3s;
+    animation: borderPulse 3s ease-in-out infinite;
+}
+
+/* Glowing Border Effect */
+.hexagon::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ffffff, #888888, #ffffff, #888888);
+    background-size: 300% 300%;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%);
+    animation: borderRotate 4s linear infinite;
+    z-index: -1;
+}
+
+/* Inner Glow */
+.hexagon::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3) 0%, transparent 60%);
+    pointer-events: none;
+    animation: innerGlow 3s ease-in-out infinite;
+}
+
+@keyframes borderPulse {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(255,255,255,0.6);
+    }
+}
+
+@keyframes borderRotate {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+@keyframes innerGlow {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
 }
 
 .hexagon-image {
@@ -211,33 +320,20 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
-}
-
-.hexagon-glow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, transparent 70%);
-    opacity: 0;
-    transition: opacity 0.5s;
-    pointer-events: none;
+    position: relative;
+    z-index: 1;
 }
 
 .hexagon:hover {
     transform: scale(1.02);
-    box-shadow: 0 0 40px rgba(255,255,255,0.2);
-}
-
-.hexagon:hover .hexagon-glow {
-    opacity: 1;
 }
 
 /* RIGHT SIDE - 3 LINES NAME */
 .hero-right {
     flex: 1;
     text-align: left;
+    position: relative;
+    z-index: 2;
 }
 
 .name-container {
@@ -255,6 +351,8 @@ body {
     text-transform: uppercase;
     font-family: 'Segoe UI', 'Inter', sans-serif;
     margin-bottom: 0.2rem;
+    display: inline-block;
+    transition: transform 0.3s ease;
     
     /* 3D Effect */
     text-shadow: 
@@ -272,18 +370,6 @@ body {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    transition: text-shadow 0.3s, transform 0.3s;
-}
-
-.name-first:hover {
-    transform: translateZ(20px);
-    text-shadow: 
-        2px 2px 0 #aaa,
-        4px 4px 0 #999,
-        6px 6px 0 #888,
-        8px 8px 0 #777,
-        10px 10px 0 #666,
-        12px 12px 15px rgba(0,0,0,0.7);
 }
 
 /* VINCENT - Line 2 */
@@ -296,6 +382,8 @@ body {
     text-transform: uppercase;
     font-family: 'Segoe UI', 'Inter', sans-serif;
     margin-bottom: 0.2rem;
+    display: inline-block;
+    transition: transform 0.3s ease;
     
     /* 3D Effect */
     text-shadow: 
@@ -313,18 +401,6 @@ body {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    transition: text-shadow 0.3s, transform 0.3s;
-}
-
-.name-middle:hover {
-    transform: translateZ(25px);
-    text-shadow: 
-        2px 2px 0 #aaa,
-        4px 4px 0 #999,
-        6px 6px 0 #888,
-        8px 8px 0 #777,
-        10px 10px 0 #666,
-        12px 12px 15px rgba(0,0,0,0.7);
 }
 
 /* DIMAANO - Line 3 */
@@ -336,6 +412,8 @@ body {
     letter-spacing: 10px;
     text-transform: uppercase;
     font-family: 'Segoe UI', 'Inter', sans-serif;
+    display: inline-block;
+    transition: transform 0.3s ease;
     
     /* 3D Effect */
     text-shadow: 
@@ -353,18 +431,6 @@ body {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    transition: text-shadow 0.3s, transform 0.3s;
-}
-
-.name-last:hover {
-    transform: translateZ(30px);
-    text-shadow: 
-        2px 2px 0 #aaa,
-        4px 4px 0 #999,
-        6px 6px 0 #888,
-        8px 8px 0 #777,
-        10px 10px 0 #666,
-        12px 12px 15px rgba(0,0,0,0.7);
 }
 
 .profession {
@@ -384,11 +450,6 @@ body {
     font-size: 1.8rem;
     font-weight: 300;
     transition: color 0.3s, transform 0.3s;
-}
-
-.separator:hover {
-    color: #aaa;
-    transform: scale(1.1);
 }
 
 /* Sections */
@@ -555,7 +616,7 @@ section {
     border-radius: 8px;
     overflow: hidden;
     transition: all 0.3s;
-    opacity: 0; /* Hidden by default - lalabas via JS */
+    opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s;
 }
