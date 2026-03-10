@@ -13,6 +13,9 @@ filterButtons.forEach(button => {
             if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
                 card.style.display = 'block';
                 card.style.animation = 'fadeInUp 0.5s ease';
+                setTimeout(() => {
+                    card.style.animation = '';
+                }, 500);
             } else {
                 card.style.display = 'none';
             }
@@ -126,9 +129,7 @@ if (nameFirst && nameMiddle && nameLast) {
     });
 }
 
-// ========== NEW RANDOM EFFECTS ==========
-
-// IDEA B: RANDOM DRIFTING PARA SA PANGALAN (DALE, VINCENT, DIMAANO)
+// ===== RANDOM DRIFTING PARA SA PANGALAN (IDEA B) =====
 function randomDrift() {
     // DALE - konting galaw lang
     const driftX1 = (Math.random() - 0.5) * 8; // -4px to 4px
@@ -146,12 +147,12 @@ function randomDrift() {
     const rotate3 = (Math.random() - 0.5) * 2.5; // -1.25deg to 1.25deg
     
     // Apply sa pangalan
-    nameFirst.style.transform = `translate(${driftX1}px, ${driftY1}px) rotate(${rotate1}deg)`;
-    nameMiddle.style.transform = `translate(${driftX2}px, ${driftY2}px) rotate(${rotate2}deg)`;
-    nameLast.style.transform = `translate(${driftX3}px, ${driftY3}px) rotate(${rotate3}deg)`;
+    nameFirst.style.transform += ` translate(${driftX1}px, ${driftY1}px) rotate(${rotate1}deg)`;
+    nameMiddle.style.transform += ` translate(${driftX2}px, ${driftY2}px) rotate(${rotate2}deg)`;
+    nameLast.style.transform += ` translate(${driftX3}px, ${driftY3}px) rotate(${rotate3}deg)`;
 }
 
-// IDEA D: GLITCH EFFECT PARA SA "Computer Engineer"
+// ===== GLITCH EFFECT PARA SA "Computer Engineer" (IDEA D) =====
 const professionText = document.querySelector('.profession');
 const originalText = 'Computer Engineer';
 const glitchChars = '!<>-_\\/[]{}—=+*^?#________';
@@ -159,7 +160,7 @@ const glitchChars = '!<>-_\\/[]{}—=+*^?#________';
 function glitchEffect() {
     let glitchCount = 0;
     const glitchInterval = setInterval(() => {
-        if (glitchCount < 6) { // Maglili glitch ng 6 na beses
+        if (glitchCount < 6) { // Magli-glitch ng 6 na beses
             // Pumili ng random na letra na papalitan
             const textArray = originalText.split('');
             const glitchPos = Math.floor(Math.random() * textArray.length);
@@ -176,6 +177,39 @@ function glitchEffect() {
         }
     }, 80); // 80ms per glitch
 }
+
+// ===== GLOW FOLLOW (Cursor Effect) =====
+// Create glow element
+const glow = document.createElement('div');
+glow.className = 'glow-cursor';
+document.body.appendChild(glow);
+
+// Hide glow by default
+glow.style.opacity = '0';
+
+// Show glow when mouse moves
+document.addEventListener('mousemove', (e) => {
+    glow.style.opacity = '1';
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+    
+    // Pag nasa links or buttons, lumiliit ang glow
+    const target = e.target;
+    if (target.tagName === 'A' || target.tagName === 'BUTTON' || target.classList.contains('filter-btn') || target.classList.contains('project-link')) {
+        glow.style.width = '150px';
+        glow.style.height = '150px';
+        glow.style.background = 'radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 70%)';
+    } else {
+        glow.style.width = '300px';
+        glow.style.height = '300px';
+        glow.style.background = 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%)';
+    }
+});
+
+// Hide glow when mouse leaves window
+document.addEventListener('mouseleave', () => {
+    glow.style.opacity = '0';
+});
 
 // RUN ALL EFFECTS
 setInterval(() => {
