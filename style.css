@@ -1,4 +1,4 @@
-/* Professional 3D Logo Style - MAS MAGANDANG 3D LETTERS */
+/* Professional 3D Logo Style - 3 LINES NAME */
 :root {
     --pure-black: #000000;
     --dark-grey: #0a0a0a;
@@ -104,7 +104,7 @@ body {
     background: linear-gradient(90deg, transparent, var(--text-dim), transparent);
 }
 
-/* Hero Section - Hexagon + MAS MAGANDANG 3D LETTERS */
+/* Hero Section - Hexagon + 3 LINES NAME */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -112,6 +112,7 @@ body {
     justify-content: center;
     position: relative;
     padding: 6rem 2rem 2rem 2rem;
+    perspective: 1200px;
 }
 
 .hero-content {
@@ -177,7 +178,7 @@ body {
     opacity: 1;
 }
 
-/* RIGHT SIDE - MAS MAGANDANG 3D LETTERS */
+/* RIGHT SIDE - 3 LINES NAME */
 .hero-right {
     flex: 1;
     text-align: left;
@@ -188,49 +189,16 @@ body {
     position: relative;
 }
 
-/* DALE VINCENT - 3D Letters */
+/* DALE - Line 1 */
 .name-first {
-    font-size: 6rem;
+    font-size: 5.5rem;
     font-weight: 800;
     line-height: 1.1;
-    letter-spacing: 6px;
-    text-transform: uppercase;
-    font-family: 'Segoe UI', 'Inter', sans-serif;
-    margin-bottom: 0.3rem;
-    position: relative;
-    display: inline-block;
-    
-    /* 3D Effect - bawat letra may depth */
-    text-shadow: 
-        1px 1px 0 #aaa,
-        2px 2px 0 #999,
-        3px 3px 0 #888,
-        4px 4px 0 #777,
-        5px 5px 0 #666,
-        6px 6px 0 #555,
-        7px 7px 0 #444,
-        8px 8px 0 #333,
-        9px 9px 0 #222,
-        10px 10px 0 #111,
-        12px 12px 15px rgba(0,0,0,0.7);
-    
-    /* Light sa front */
-    background: linear-gradient(145deg, #fff, #eee);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-/* DIMAANO - 3D Letters */
-.name-last {
-    font-size: 5rem;
-    font-weight: 600;
-    line-height: 1.1;
+    color: #ffffff;
     letter-spacing: 8px;
     text-transform: uppercase;
     font-family: 'Segoe UI', 'Inter', sans-serif;
-    position: relative;
-    display: inline-block;
+    margin-bottom: 0.2rem;
     
     /* 3D Effect */
     text-shadow: 
@@ -242,32 +210,69 @@ body {
         6px 6px 0 #555,
         7px 7px 0 #444,
         8px 8px 0 #333,
-        9px 9px 0 #222,
-        10px 10px 12px rgba(0,0,0,0.7);
+        10px 10px 15px rgba(0,0,0,0.7);
     
-    /* Light gradient */
-    background: linear-gradient(145deg, #f0f0f0, #ddd);
+    background: linear-gradient(145deg, #fff, #eee);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 
-/* Individual letter styling */
-.name-first span, .name-last span {
-    display: inline-block;
-    transform-style: preserve-3d;
-    transition: transform 0.2s;
-    position: relative;
+/* VINCENT - Line 2 */
+.name-middle {
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #f5f5f5;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    font-family: 'Segoe UI', 'Inter', sans-serif;
+    margin-bottom: 0.2rem;
+    
+    /* 3D Effect */
+    text-shadow: 
+        1px 1px 0 #aaa,
+        2px 2px 0 #999,
+        3px 3px 0 #888,
+        4px 4px 0 #777,
+        5px 5px 0 #666,
+        6px 6px 0 #555,
+        7px 7px 0 #444,
+        8px 8px 0 #333,
+        10px 10px 15px rgba(0,0,0,0.7);
+    
+    background: linear-gradient(145deg, #f5f5f5, #ddd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
-.name-first span:hover, .name-last span:hover {
-    transform: translateZ(20px) rotateX(3deg) rotateY(3deg);
+/* DIMAANO - Line 3 */
+.name-last {
+    font-size: 4.8rem;
+    font-weight: 600;
+    line-height: 1.1;
+    color: #f0f0f0;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    font-family: 'Segoe UI', 'Inter', sans-serif;
+    
+    /* 3D Effect */
     text-shadow: 
-        2px 2px 0 #aaa,
-        4px 4px 0 #999,
-        6px 6px 0 #888,
-        8px 8px 0 #777,
-        10px 10px 15px rgba(0,0,0,0.5);
+        1px 1px 0 #aaa,
+        2px 2px 0 #999,
+        3px 3px 0 #888,
+        4px 4px 0 #777,
+        5px 5px 0 #666,
+        6px 6px 0 #555,
+        7px 7px 0 #444,
+        8px 8px 0 #333,
+        10px 10px 15px rgba(0,0,0,0.7);
+    
+    background: linear-gradient(145deg, #f0f0f0, #ccc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 .profession {
@@ -648,8 +653,12 @@ footer {
         font-size: 4.5rem;
     }
     
-    .name-last {
+    .name-middle {
         font-size: 4rem;
+    }
+    
+    .name-last {
+        font-size: 3.8rem;
     }
     
     .about-content,
@@ -675,12 +684,17 @@ footer {
     
     .name-first {
         font-size: 3.5rem;
-        letter-spacing: 4px;
+        letter-spacing: 6px;
+    }
+    
+    .name-middle {
+        font-size: 3.2rem;
+        letter-spacing: 6px;
     }
     
     .name-last {
         font-size: 3rem;
-        letter-spacing: 6px;
+        letter-spacing: 8px;
     }
     
     .profession {
@@ -708,7 +722,11 @@ footer {
         font-size: 2.5rem;
     }
     
-    .name-last {
+    .name-middle {
         font-size: 2.2rem;
+    }
+    
+    .name-last {
+        font-size: 2rem;
     }
 }
