@@ -12,11 +12,7 @@ filterButtons.forEach(button => {
         projectCards.forEach(card => {
             if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
                 card.style.display = 'block';
-                // Add animation when filtering
-                card.style.animation = 'cardAppear 0.5s ease';
-                setTimeout(() => {
-                    card.style.animation = '';
-                }, 500);
+                card.style.animation = 'fadeInUp 0.5s ease';
             } else {
                 card.style.display = 'none';
             }
@@ -87,7 +83,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// 3D CURSOR EFFECT - 3 LINES
+// 3D CURSOR EFFECT - 3 LINES (original)
 const hero = document.querySelector('.hero');
 const nameFirst = document.querySelector('.name-first');
 const nameMiddle = document.querySelector('.name-middle');
@@ -130,7 +126,67 @@ if (nameFirst && nameMiddle && nameLast) {
     });
 }
 
-// SCROLL REVEAL - CARD STAGGER (IDEA 10)
+// ========== NEW RANDOM EFFECTS ==========
+
+// IDEA B: RANDOM DRIFTING PARA SA PANGALAN (DALE, VINCENT, DIMAANO)
+function randomDrift() {
+    // DALE - konting galaw lang
+    const driftX1 = (Math.random() - 0.5) * 8; // -4px to 4px
+    const driftY1 = (Math.random() - 0.5) * 6; // -3px to 3px
+    const rotate1 = (Math.random() - 0.5) * 1.5; // -0.75deg to 0.75deg
+    
+    // VINCENT - katamtamang galaw
+    const driftX2 = (Math.random() - 0.5) * 12; // -6px to 6px
+    const driftY2 = (Math.random() - 0.5) * 8; // -4px to 4px
+    const rotate2 = (Math.random() - 0.5) * 2; // -1deg to 1deg
+    
+    // DIMAANO - pinakamalayang galaw
+    const driftX3 = (Math.random() - 0.5) * 15; // -7.5px to 7.5px
+    const driftY3 = (Math.random() - 0.5) * 10; // -5px to 5px
+    const rotate3 = (Math.random() - 0.5) * 2.5; // -1.25deg to 1.25deg
+    
+    // Apply sa pangalan
+    nameFirst.style.transform = `translate(${driftX1}px, ${driftY1}px) rotate(${rotate1}deg)`;
+    nameMiddle.style.transform = `translate(${driftX2}px, ${driftY2}px) rotate(${rotate2}deg)`;
+    nameLast.style.transform = `translate(${driftX3}px, ${driftY3}px) rotate(${rotate3}deg)`;
+}
+
+// IDEA D: GLITCH EFFECT PARA SA "Computer Engineer"
+const professionText = document.querySelector('.profession');
+const originalText = 'Computer Engineer';
+const glitchChars = '!<>-_\\/[]{}—=+*^?#________';
+
+function glitchEffect() {
+    let glitchCount = 0;
+    const glitchInterval = setInterval(() => {
+        if (glitchCount < 6) { // Maglili glitch ng 6 na beses
+            // Pumili ng random na letra na papalitan
+            const textArray = originalText.split('');
+            const glitchPos = Math.floor(Math.random() * textArray.length);
+            const randomChar = glitchChars[Math.floor(Math.random() * glitchChars.length)];
+            
+            textArray[glitchPos] = randomChar;
+            professionText.innerHTML = `<span class="separator">[</span> ${textArray.join('')} <span class="separator">]</span>`;
+            
+            glitchCount++;
+        } else {
+            // Balik sa original
+            professionText.innerHTML = `<span class="separator">[</span> ${originalText} <span class="separator">]</span>`;
+            clearInterval(glitchInterval);
+        }
+    }, 80); // 80ms per glitch
+}
+
+// RUN ALL EFFECTS
+setInterval(() => {
+    randomDrift(); // Palaging tumatakbo ang drifting (every 2 seconds)
+}, 2000);
+
+setInterval(() => {
+    glitchEffect(); // Magka-glitch every 5 seconds
+}, 5000);
+
+// SCROLL REVEAL - CARD STAGGER
 window.addEventListener('load', () => {
     // Initial setup - lahat ng cards nakatago
     const cards = document.querySelectorAll('.project-card');
@@ -166,7 +222,7 @@ window.addEventListener('load', () => {
             setTimeout(() => {
                 card.style.opacity = '1';
                 card.style.transform = 'translateY(0)';
-            }, index * 150); // 150ms delay kada card
+            }, index * 150);
         });
     }
     
