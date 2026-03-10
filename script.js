@@ -12,7 +12,11 @@ filterButtons.forEach(button => {
         projectCards.forEach(card => {
             if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
                 card.style.display = 'block';
-                card.style.animation = 'fadeInUp 0.5s ease';
+                // Add animation when filtering
+                card.style.animation = 'cardAppear 0.5s ease';
+                setTimeout(() => {
+                    card.style.animation = '';
+                }, 500);
             } else {
                 card.style.display = 'none';
             }
@@ -73,38 +77,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// SCROLL TRANSITION - pag nag-scroll pababa, may lalabas na effects
-const observerOptions = {
-    threshold: 0.2, // 20% ng section ang visible bago mag-trigger
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            // Kapag pumasok sa view yung section
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-            
-            // Add subtle glow effect
-            entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease, box-shadow 0.6s ease';
-            entry.target.style.boxShadow = 'inset 0 0 30px rgba(255,255,255,0.05)';
-            
-            setTimeout(() => {
-                entry.target.style.boxShadow = 'none';
-            }, 600);
-        }
-    });
-}, observerOptions);
-
-// Apply sa lahat ng sections at project cards
-document.querySelectorAll('.hero, .about, .projects, .contact, .project-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-});
-
 // Navbar transparency on scroll
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
@@ -158,6 +130,55 @@ if (nameFirst && nameMiddle && nameLast) {
     });
 }
 
+// SCROLL REVEAL - CARD STAGGER (IDEA 10)
+window.addEventListener('load', () => {
+    // Initial setup - lahat ng cards nakatago
+    const cards = document.querySelectorAll('.project-card');
+    cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+    
+    // Function to check if element is in viewport
+    function isInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top <= window.innerHeight * 0.85 &&
+            rect.bottom >= 0
+        );
+    }
+    
+    // Function to reveal cards with stagger effect
+    function revealCards() {
+        const cards = document.querySelectorAll('.project-card');
+        let visibleCards = [];
+        
+        // Kunin ang mga visible na cards
+        cards.forEach(card => {
+            if (isInViewport(card)) {
+                visibleCards.push(card);
+            }
+        });
+        
+        // Ipakita ang cards sunod-sunod
+        visibleCards.forEach((card, index) => {
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, index * 150); // 150ms delay kada card
+        });
+    }
+    
+    // Run on scroll
+    window.addEventListener('scroll', () => {
+        revealCards();
+    });
+    
+    // Run once on load
+    setTimeout(revealCards, 200);
+});
+
 // Contact form
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
@@ -167,13 +188,3 @@ if (contactForm) {
         contactForm.reset();
     });
 }
-
-// Fade in animation on page load
-window.addEventListener('load', () => {
-    const sections = document.querySelectorAll('.hero, .about, .projects, .contact');
-    sections.forEach((section, index) => {
-        setTimeout(() => {
-            section.style.animation = `fadeInUp 0.6s ease`;
-        }, index * 0.1);
-    });
-});
