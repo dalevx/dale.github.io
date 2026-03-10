@@ -42,12 +42,13 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// 3D CURSOR EFFECT - MAS MAGANDA (bawat letra gumagalaw)
+// 3D CURSOR EFFECT - 3 LINES
 const hero = document.querySelector('.hero');
-const nameFirstLetters = document.querySelectorAll('.name-first span');
-const nameLastLetters = document.querySelectorAll('.name-last span');
+const nameFirst = document.querySelector('.name-first');
+const nameMiddle = document.querySelector('.name-middle');
+const nameLast = document.querySelector('.name-last');
 
-if (nameFirstLetters.length > 0 && nameLastLetters.length > 0) {
+if (nameFirst && nameMiddle && nameLast) {
     let timeout;
     
     hero.addEventListener('mousemove', (e) => {
@@ -58,58 +59,28 @@ if (nameFirstLetters.length > 0 && nameLastLetters.length > 0) {
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
         
-        // Base rotation (mas subtle, 12 degrees max)
-        const baseRotateY = ((mouseX - centerX) / centerX) * 12;
-        const baseRotateX = ((mouseY - centerY) / centerY) * -12;
+        // Base rotation (max 10 degrees)
+        const baseRotateY = ((mouseX - centerX) / centerX) * 10;
+        const baseRotateX = ((mouseY - centerY) / centerY) * -10;
         
-        // Iba-ibang galaw per letter - para mas maganda
-        nameFirstLetters.forEach((letter, index) => {
-            // Iba-ibang delay para sunod-sunod ang galaw
-            const delay = index * 0.03;
-            // Iba-ibang intensity para hindi pare-pareho
-            const intensity = 0.8 + (index % 4) * 0.2;
-            // Iba-ibang Z depth
-            const zDepth = 15 + (index * 2);
-            
-            letter.style.transform = `perspective(1000px) 
-                rotateX(${baseRotateX * intensity}deg) 
-                rotateY(${baseRotateY * intensity}deg) 
-                translateZ(${zDepth}px)`;
-            letter.style.transition = 'transform 0.15s cubic-bezier(0.23, 1, 0.32, 1)';
-            letter.style.transitionDelay = `${delay}s`;
-        });
+        // Iba-ibang intensity per line
+        nameFirst.style.transform = `perspective(1000px) rotateX(${baseRotateX}deg) rotateY(${baseRotateY}deg) translateZ(20px)`;
+        nameFirst.style.transition = 'transform 0.1s ease-out';
         
-        nameLastLetters.forEach((letter, index) => {
-            const delay = index * 0.03 + 0.2; // Mas late magalaw ang DIMAANO
-            const intensity = 1.0 + (index % 3) * 0.15;
-            const zDepth = 20 + (index * 3);
-            
-            letter.style.transform = `perspective(1000px) 
-                rotateX(${baseRotateX * intensity}deg) 
-                rotateY(${baseRotateY * intensity}deg) 
-                translateZ(${zDepth}px)`;
-            letter.style.transition = 'transform 0.15s cubic-bezier(0.23, 1, 0.32, 1)';
-            letter.style.transitionDelay = `${delay}s`;
-        });
+        nameMiddle.style.transform = `perspective(1000px) rotateX(${baseRotateX * 1.1}deg) rotateY(${baseRotateY * 1.1}deg) translateZ(30px)`;
+        nameMiddle.style.transition = 'transform 0.1s ease-out';
         
-        // Clear any existing timeout
+        nameLast.style.transform = `perspective(1000px) rotateX(${baseRotateX * 1.2}deg) rotateY(${baseRotateY * 1.2}deg) translateZ(40px)`;
+        nameLast.style.transition = 'transform 0.1s ease-out';
+        
         clearTimeout(timeout);
     });
     
-    // Reset when mouse leaves (with delay para smooth)
     hero.addEventListener('mouseleave', () => {
         timeout = setTimeout(() => {
-            nameFirstLetters.forEach(letter => {
-                letter.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
-                letter.style.transition = 'transform 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
-                letter.style.transitionDelay = '0s';
-            });
-            
-            nameLastLetters.forEach(letter => {
-                letter.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
-                letter.style.transition = 'transform 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
-                letter.style.transitionDelay = '0s';
-            });
+            nameFirst.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+            nameMiddle.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+            nameLast.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
         }, 200);
     });
 }
