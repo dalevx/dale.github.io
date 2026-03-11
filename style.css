@@ -611,6 +611,11 @@ section {
     transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.stat-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .stat-card:hover {
     border-color: var(--text-dim);
     transform: translateY(-5px);
@@ -672,6 +677,11 @@ section {
     transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.social-link-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .social-link-item i {
     font-size: 1.1rem;
 }
@@ -697,9 +707,8 @@ section {
     border-radius: 12px;
     padding: 2rem;
     transition: all 0.3s;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1; /* Laging kita */
+    transform: translateY(0);
 }
 
 .ojt-card:hover {
@@ -763,6 +772,7 @@ section {
 
 .ojt-company p, .ojt-location p {
     font-size: 1.1rem;
+    color: var(--text-secondary);
 }
 
 .ojt-description {
@@ -877,6 +887,11 @@ section {
     transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.edu-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 @media (min-width: 769px) {
     .edu-card {
         flex-direction: row;
@@ -951,6 +966,11 @@ section {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-progress-item.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .skill-info {
@@ -1038,6 +1058,11 @@ section {
     transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.hobby-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .hobby-card i {
     font-size: 1.2rem;
     color: var(--text-dim);
@@ -1098,6 +1123,11 @@ section {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cert-card.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .cert-card:hover {
@@ -1211,6 +1241,11 @@ section {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s;
+}
+
+.project-card.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .project-card:hover {
