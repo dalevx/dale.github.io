@@ -1384,114 +1384,60 @@ section {
     color: var(--text-primary);
 }
 
-/* Contact Section */
+/* ===== CONTACT SECTION (UPDATED - NO FORM) ===== */
 .contact {
     border-top: 1px solid var(--border-color);
 }
 
 .contact-container {
-    max-width: 1000px;
+    max-width: 800px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-}
-
-@media (min-width: 769px) {
-    .contact-container {
-        grid-template-columns: 1fr 1.5fr;
-        gap: 4rem;
-    }
 }
 
 .contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    justify-content: center;
 }
 
 .contact-item {
     display: flex;
     align-items: center;
     gap: 1rem;
-    transition: transform 0.3s;
+    padding: 1.5rem;
+    background: var(--dark-grey);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: all 0.3s;
 }
 
 .contact-item:hover {
-    transform: translateX(5px);
+    border-color: var(--text-dim);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255,255,255,0.05);
 }
 
 .contact-item i {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: var(--text-dim);
-    width: 24px;
+    width: 40px;
+    text-align: center;
 }
 
 .contact-item h4 {
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 400;
-    margin-bottom: 0.2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.3rem;
 }
 
 .contact-item p {
     color: var(--text-dim);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 300;
     font-family: 'Courier New', monospace;
     word-break: break-word;
-}
-
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 0.8rem;
-    background: transparent;
-    border: 1px solid var(--border-color);
-    color: var(--text-primary);
-    font-family: 'Courier New', monospace;
-    font-weight: 300;
-    transition: all 0.3s;
-    font-size: 0.95rem;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--text-dim);
-    transform: scale(1.02);
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-    color: var(--text-dim);
-}
-
-.btn-primary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.8rem 1.5rem;
-    background: transparent;
-    border: 1px solid var(--border-color);
-    color: var(--text-primary);
-    cursor: pointer;
-    transition: all 0.3s;
-    font-weight: 300;
-    letter-spacing: 2px;
-    font-family: 'Courier New', monospace;
-    font-size: 0.95rem;
-}
-
-.btn-primary:hover {
-    border-color: var(--text-primary);
-    transform: translateY(-2px);
 }
 
 /* Footer */
@@ -1606,6 +1552,29 @@ footer {
         padding: 0.4rem 0.8rem;
         font-size: 0.85rem;
     }
+    
+    /* Contact responsive */
+    .contact-info {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .contact-item {
+        padding: 1.2rem;
+    }
+    
+    .contact-item i {
+        font-size: 1.3rem;
+        width: 35px;
+    }
+    
+    .contact-item h4 {
+        font-size: 0.95rem;
+    }
+    
+    .contact-item p {
+        font-size: 0.9rem;
+    }
 }
 
 /* Small Mobile Devices */
@@ -1682,16 +1651,6 @@ footer {
         justify-content: center;
     }
     
-    .contact-item {
-        flex-direction: column;
-        text-align: center;
-        gap: 0.3rem;
-    }
-    
-    .contact-item i {
-        margin-bottom: 0.2rem;
-    }
-    
     /* OJT mobile */
     .ojt-card {
         padding: 1.2rem;
@@ -1721,6 +1680,17 @@ footer {
     .tech-tag {
         width: 100%;
         justify-content: center;
+    }
+    
+    /* Contact mobile */
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+    
+    .contact-item i {
+        margin-bottom: 0.3rem;
     }
 }
 
@@ -1789,7 +1759,8 @@ footer {
     .cert-card:hover,
     .social-link-item:hover,
     .btn-primary:hover,
-    .tech-tag:hover {
+    .tech-tag:hover,
+    .contact-item:hover {
         transform: none;
     }
     
