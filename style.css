@@ -109,7 +109,7 @@ body {
 }
 
 /* TRANSITION EFFECTS FOR SECTIONS */
-.hero, .about, .projects, .contact, .education-section, .skills-progress-section, .hobbies-section, .certifications-section {
+.hero, .about, .projects, .contact, .education-section, .skills-progress-section, .hobbies-section, .certifications-section, .ojt-section {
     transition: opacity 0.5s ease, transform 0.5s ease;
     opacity: 1;
     transform: translateY(0);
@@ -681,6 +681,179 @@ section {
     color: var(--text-primary);
     transform: translateY(-3px);
     background: rgba(255,255,255,0.05);
+}
+
+/* ===== OJT EXPERIENCE SECTION ===== */
+.ojt-section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: 1px solid var(--border-color);
+}
+
+.ojt-card {
+    background: var(--dark-grey);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: all 0.3s;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ojt-card:hover {
+    border-color: var(--text-dim);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255,255,255,0.05);
+}
+
+.ojt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.ojt-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.ojt-title i {
+    font-size: 2rem;
+    color: var(--text-dim);
+}
+
+.ojt-title h3 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 2px;
+}
+
+.ojt-hours {
+    background: var(--text-dim);
+    color: var(--pure-black);
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+}
+
+.ojt-company, .ojt-location {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-dim);
+}
+
+.ojt-company i, .ojt-location i {
+    font-size: 1.2rem;
+    color: var(--text-dim);
+    width: 24px;
+}
+
+.ojt-company p, .ojt-location p {
+    font-size: 1.1rem;
+}
+
+.ojt-description {
+    margin: 1.5rem 0;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.ojt-description p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    font-weight: 300;
+}
+
+.ojt-responsibilities, .ojt-tech {
+    margin-bottom: 1.5rem;
+}
+
+.ojt-responsibilities h4, .ojt-tech h4 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    font-family: 'Courier New', monospace;
+}
+
+.ojt-responsibilities h4 i, .ojt-tech h4 i {
+    color: var(--text-dim);
+    font-size: 1.2rem;
+}
+
+.ojt-responsibilities ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.ojt-responsibilities li {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.ojt-responsibilities li i {
+    color: var(--text-dim);
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.tech-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 30px;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    font-family: 'Courier New', monospace;
+}
+
+.tech-tag i {
+    font-size: 1rem;
+    color: var(--text-dim);
+}
+
+.tech-tag:hover {
+    border-color: var(--text-primary);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+    background: rgba(255,255,255,0.05);
+}
+
+.tech-tag:hover i {
+    color: var(--text-primary);
 }
 
 /* ===== EDUCATION SECTION ===== */
@@ -1367,6 +1540,37 @@ footer {
     .cert-issuer {
         font-size: 0.8rem;
     }
+    
+    /* OJT responsive */
+    .ojt-section {
+        padding: 3rem 1rem;
+    }
+    
+    .ojt-card {
+        padding: 1.5rem;
+    }
+    
+    .ojt-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .ojt-title h3 {
+        font-size: 1.5rem;
+    }
+    
+    .ojt-hours {
+        align-self: flex-start;
+    }
+    
+    .ojt-description p {
+        font-size: 1rem;
+    }
+    
+    .tech-tag {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+    }
 }
 
 /* Small Mobile Devices */
@@ -1452,6 +1656,37 @@ footer {
     .contact-item i {
         margin-bottom: 0.2rem;
     }
+    
+    /* OJT mobile */
+    .ojt-card {
+        padding: 1.2rem;
+    }
+    
+    .ojt-title i {
+        font-size: 1.5rem;
+    }
+    
+    .ojt-title h3 {
+        font-size: 1.3rem;
+    }
+    
+    .ojt-hours {
+        font-size: 0.9rem;
+        padding: 0.4rem 1rem;
+    }
+    
+    .ojt-company p, .ojt-location p {
+        font-size: 0.95rem;
+    }
+    
+    .ojt-responsibilities li {
+        font-size: 0.9rem;
+    }
+    
+    .tech-tag {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 /* Tablet Devices */
@@ -1518,7 +1753,8 @@ footer {
     .hobby-card:hover,
     .cert-card:hover,
     .social-link-item:hover,
-    .btn-primary:hover {
+    .btn-primary:hover,
+    .tech-tag:hover {
         transform: none;
     }
     
